@@ -121,10 +121,14 @@ header.top .updated {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  align-items: start;
+  align-items: stretch;
 }
 
-.panel { min-width: 0; }
+.panel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
 .panel--span2 { grid-column: span 2; }
 .panel--full { grid-column: 1 / -1; }
 
@@ -132,9 +136,15 @@ header.top .updated {
   margin: 0 0 10px;
 }
 
+.panel .card {
+  flex: 1 1 auto;
+}
+
 .card {
   border-radius: 22px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero .label {
