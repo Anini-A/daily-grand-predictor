@@ -1,4 +1,4 @@
-const CACHE = "dg-predictor-v1";
+const CACHE = "dg-predictor-v2";
 const CORE_ASSETS = ["./", "./index.html", "./style.css", "./app.js", "./manifest.json"];
 
 self.addEventListener("install", (event) => {
@@ -13,14 +13,17 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+// Network-first for everything: the dashboard changes often (new draws,
+// new features), so freshness matters more than offline support. Cache is
+// only a fallback for when the network is unavailable.
 self.addEventListener("fetch", (event) => {
-  const url = new URL(event.request.url);
-  // Always go to network for the JSON data files so predictions stay fresh.
-  if (url.pathname.includes("/data/")) {
-    event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
-    return;
-  }
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    fetch(event.request)
+      .then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(event.request, copy));
+        return res;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
