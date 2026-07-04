@@ -87,6 +87,22 @@ function renderPairs(stats) {
   `).join("");
 }
 
+function renderForever(stats) {
+  const el = document.getElementById("forever");
+  if (!stats) {
+    el.innerHTML = `<div class="empty-state">Loading&hellip;</div>`;
+    return;
+  }
+  const pick = stats.forever_pick;
+  el.innerHTML = `
+    <div class="forever-row">
+      ${pick.numbers.map((n) => `<div class="ball forever-ball">${n}</div>`).join("")}
+      <div class="ball forever-ball grand">${pick.grand_number}</div>
+    </div>
+    <p class="forever-analysis">${pick.analysis}</p>
+  `;
+}
+
 function renderHero(prediction) {
   const el = document.getElementById("hero");
   if (!prediction) {
@@ -110,7 +126,7 @@ function renderHero(prediction) {
 
 function renderKpis(audit) {
   const el = document.getElementById("kpis");
-  if (!audit) {
+  if (!audit || audit.draws_audited == null) {
     el.innerHTML = `<div class="empty-state">Not enough history to audit yet.</div>`;
     return;
   }
@@ -134,7 +150,7 @@ function renderKpis(audit) {
 function renderChart(audit) {
   const container = document.getElementById("chart");
   const tooltip = document.getElementById("tooltip");
-  if (!audit || !audit.history.length) {
+  if (!audit || !audit.history || !audit.history.length) {
     container.innerHTML = `<div class="empty-state">No draws to chart yet.</div>`;
     return;
   }
@@ -188,22 +204,30 @@ function renderChart(audit) {
 
 function renderHistory(audit) {
   const el = document.getElementById("history-body");
-  if (!audit || !audit.history.length) {
+  const draws = audit && audit.recent_draws;
+  if (!draws || !draws.length) {
     el.innerHTML = `<tr><td class="empty-state">No draws to show yet.</td></tr>`;
     return;
   }
-  el.innerHTML = audit.history.map((d) => {
+  el.innerHTML = draws.map((d) => {
+    const hasPrediction = Array.isArray(d.predicted);
     const drawnSet = new Set(d.drawn);
-    const predSet = new Set(d.predicted);
+    const predSet = hasPrediction ? new Set(d.predicted) : new Set();
     const drawnHtml = d.drawn.map((x) => `<span class="n ${predSet.has(x) ? "hit" : ""}">${x}</span>`).join("");
-    const predHtml = d.predicted.map((x) => `<span class="n ${drawnSet.has(x) ? "hit" : ""}">${x}</span>`).join("");
+    const predHtml = hasPrediction
+      ? d.predicted.map((x) => `<span class="n ${drawnSet.has(x) ? "hit" : ""}">${x}</span>`).join("")
+      : `<span class="empty-state">&mdash;</span>`;
+    const hits = hasPrediction ? `${d.model_hits}/5` : "&mdash;";
+    const grand = hasPrediction
+      ? `${d.grand_hit ? "✓" : "—"} (${d.grand_predicted} vs ${d.grand_actual})`
+      : `${d.grand_actual}`;
     return `
       <tr>
         <td>${d.date}</td>
         <td><div class="nums">${drawnHtml}</div></td>
         <td><div class="nums">${predHtml}</div></td>
-        <td class="hit-count">${d.model_hits}/5</td>
-        <td>${d.grand_hit ? "✓" : "—"} (${d.grand_predicted} vs ${d.grand_actual})</td>
+        <td class="hit-count">${hits}</td>
+        <td>${grand}</td>
       </tr>
     `;
   }).join("");
@@ -216,6 +240,7 @@ async function main() {
     loadJSON("data/stats.json"),
   ]);
   renderLucky(stats);
+  renderForever(stats);
   renderHotCold(stats);
   renderPairs(stats);
   renderHero(prediction);

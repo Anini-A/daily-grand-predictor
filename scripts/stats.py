@@ -42,6 +42,24 @@ def main() -> None:
         for (a, b), c in pair_counts.most_common(TOP_PAIRS)
     ]
 
+    forever_numbers = [n for n, _ in ranked_main[:5]]
+    forever_counts = [c for _, c in ranked_main[:5]]
+    forever_pick = {
+        "numbers": forever_numbers,
+        "grand_number": lucky_grand,
+        "counts": forever_counts,
+        "grand_count": lucky_grand_count,
+        "analysis": (
+            f"Built from the 5 main numbers with the strongest historical showing "
+            f"({', '.join(str(n) for n in forever_numbers)}, each appearing "
+            f"{min(forever_counts)}-{max(forever_counts)} times across {n_draws} draws) "
+            f"plus the most frequent Grand Number ({lucky_grand}). Daily Grand is a "
+            f"fair, independent draw, so this doesn't predict anything - but if you're "
+            f"committing to one combination forever, anchoring to historical frequency "
+            f"is at least a reasoned starting point rather than a totally arbitrary one."
+        ),
+    }
+
     stats = {
         "draws_analyzed": n_draws,
         "lucky_number": lucky_number,
@@ -53,11 +71,13 @@ def main() -> None:
         "hot_numbers": hot_numbers,
         "cold_numbers": cold_numbers,
         "hot_pairs": hot_pairs,
+        "forever_pick": forever_pick,
     }
 
     print(f"Lucky number: {lucky_number} ({lucky_number_count}/{n_draws} draws)")
     print(f"Lucky Grand Number: {lucky_grand} ({lucky_grand_count}/{n_draws} draws)")
     print(f"Top hot pair: {hot_pairs[0]['numbers']} together {hot_pairs[0]['count']} times")
+    print(f"Forever pick: {forever_numbers} + Grand {lucky_grand}")
 
     DOCS_DATA.mkdir(parents=True, exist_ok=True)
     (DOCS_DATA / "stats.json").write_text(json.dumps(stats, indent=2))

@@ -18,84 +18,95 @@
     <span class="updated" id="page-note">auto-updated after every draw</span>
   </header>
 
-  <div class="grid">
+  <div class="dashboard">
 
-    <section class="panel panel--full">
-      <div class="card glass lucky" id="lucky">
-        <div class="empty-state">Loading&hellip;</div>
-      </div>
-    </section>
-
-    <section class="panel panel--span2">
-      <h2 class="section">🔥 Hot &amp; cold numbers</h2>
-      <div class="card glass">
-        <div class="hotcold" id="hotcold"></div>
-        <p class="hint">Based on all <span id="draws-analyzed">&mdash;</span> draws on record. Hot = drawn more often than average, cold = less.</p>
-      </div>
-    </section>
-
-    <section class="panel">
-      <h2 class="section">🎯 AI's next pick</h2>
-      <div class="card glass hero" id="hero">
-        <div class="empty-state">Loading&hellip;</div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <h2 class="section">🤝 Hot pairs</h2>
-      <div class="card glass">
-        <div class="pairs" id="pairs"></div>
-        <p class="hint">Number pairs that have landed together in the same draw most often.</p>
-      </div>
-    </section>
-
-    <section class="panel panel--span2">
-      <h2 class="section">🤖 How the AI predicts</h2>
-      <div class="card glass explainer">
-        <p>Three machine-learning models &mdash; Random Forest, Gradient Boosting,
-        and XGBoost &mdash; get blended into one prediction. Each looks at a
-        different time horizon: the <strong>last 3 draws</strong> (recent form),
-        the <strong>last 22 draws'</strong> average and spread (medium-term trend),
-        and how <strong>overdue</strong> each number is based on its gap since it
-        last appeared (long-term memory).</p>
-        <p class="hint">Daily Grand is a fair, independent draw, so no model can
-        find a real edge &mdash; the scorecard below proves it honestly. Consider
-        this a fun extra, not a strategy.</p>
-      </div>
-    </section>
-
-    <section class="panel panel--full">
-      <h2 class="section">📊 Honest scorecard</h2>
-      <div class="card glass">
-        <div class="kpi-row" id="kpis"></div>
-        <p class="verdict" id="verdict"></p>
-      </div>
-    </section>
-
-    <section class="panel panel--full">
-      <h2 class="section">Model vs. random baseline, per draw</h2>
-      <div class="card glass">
-        <div class="chart" id="chart"></div>
-        <div class="legend">
-          <span><span class="swatch" style="background:var(--accent)"></span>Model hits</span>
-          <span><span class="swatch" style="background:var(--gray-context)"></span>Random baseline</span>
+    <div class="col-left">
+      <section class="panel">
+        <h2 class="section">🎯 AI's next pick</h2>
+        <div class="card glass long hero" id="hero">
+          <div class="empty-state">Loading&hellip;</div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="panel panel--full">
-      <h2 class="section">Draw history</h2>
-      <div class="card glass" style="overflow-x:auto">
-        <table class="history">
-          <thead>
-            <tr><th>Date</th><th>Drawn</th><th>Predicted</th><th>Hits</th><th>Grand</th></tr>
-          </thead>
-          <tbody id="history-body"></tbody>
-        </table>
-      </div>
-    </section>
+      <section class="panel">
+        <h2 class="section">🤖 How the AI predicts</h2>
+        <div class="card glass long explainer">
+          <p>Three machine-learning models &mdash; Random Forest, Gradient Boosting,
+          and XGBoost &mdash; get blended into one prediction. Each looks at a
+          different time horizon: the <strong>last 3 draws</strong> (recent form),
+          the <strong>last 22 draws'</strong> average and spread (medium-term trend),
+          and how <strong>overdue</strong> each number is based on its gap since it
+          last appeared (long-term memory).</p>
+          <p class="hint">Daily Grand is a fair, independent draw, so no model can
+          find a real edge &mdash; the scorecard below proves it honestly. Consider
+          this a fun extra, not a strategy.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 class="section">📊 Honest scorecard</h2>
+        <div class="card glass long">
+          <div class="kpi-row" id="kpis"></div>
+          <p class="verdict" id="verdict"></p>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-right">
+      <section class="panel">
+        <div class="card glass short lucky" id="lucky">
+          <div class="empty-state">Loading&hellip;</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 class="section">🔒 AI's forever pick</h2>
+        <div class="card glass short forever" id="forever">
+          <div class="empty-state">Loading&hellip;</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 class="section">🔥 Hot &amp; cold numbers</h2>
+        <div class="card glass short">
+          <div class="hotcold" id="hotcold"></div>
+          <p class="hint">Based on all <span id="draws-analyzed">&mdash;</span> draws on record. Hot = drawn more often than average, cold = less.</p>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 class="section">🤝 Hot pairs</h2>
+        <div class="card glass short">
+          <div class="pairs" id="pairs"></div>
+          <p class="hint">Number pairs that have landed together in the same draw most often.</p>
+        </div>
+      </section>
+    </div>
 
   </div>
+
+  <section class="panel panel--full">
+    <h2 class="section">Model vs. random baseline, per draw</h2>
+    <div class="card glass">
+      <div class="chart" id="chart"></div>
+      <div class="legend">
+        <span><span class="swatch" style="background:var(--accent)"></span>Model hits</span>
+        <span><span class="swatch" style="background:var(--gray-context)"></span>Random baseline</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel panel--full">
+    <h2 class="section">Draw history</h2>
+    <div class="card glass" style="overflow-x:auto">
+      <table class="history">
+        <thead>
+          <tr><th>Date</th><th>Drawn</th><th>Predicted</th><th>Hits</th><th>Grand</th></tr>
+        </thead>
+        <tbody id="history-body"></tbody>
+      </table>
+    </div>
+  </section>
 
   <footer>Data scraped from LotteryExtreme &middot; regenerated automatically after each draw</footer>
 </div>

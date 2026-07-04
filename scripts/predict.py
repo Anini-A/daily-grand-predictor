@@ -125,6 +125,46 @@ def save_prediction(target_date, res):
     return True
 
 
+def build_recent_draws(df, n=25):
+    """All actual draws (most recent n), with a predicted overlay only where
+    the AI made a prediction for that date in advance. Independent of the
+    audit's matched-only scoring, so the site's history table always shows
+    the latest real draws even if most of them predate automated predictions.
+    """
+    actuals = df.copy()
+    actuals["Date"] = pd.to_datetime(actuals[["year", "month", "day"]]).dt.strftime("%Y-%m-%d")
+    actuals = actuals.sort_values("Date", ascending=False).head(n)
+
+    preds_by_date = {}
+    if FUTURE_PATH.exists():
+        preds = pd.read_csv(FUTURE_PATH)
+        preds["Date"] = pd.to_datetime(preds["Next Draw Date"]).dt.strftime("%Y-%m-%d")
+        preds_by_date = {row["Date"]: row for _, row in preds.iterrows()}
+
+    rows = []
+    for _, row in actuals.iterrows():
+        date = row["Date"]
+        act_main = [int(row[c]) for c in MAIN_COLS]
+        act_g = int(row["grand_number"])
+        pred = preds_by_date.get(date)
+        if pred is not None:
+            pre_main = [int(pred[f"dn_{i}"]) for i in range(1, 6)]
+            pre_g = int(pred["grand_number"])
+            rows.append({
+                "date": date, "drawn": act_main, "predicted": pre_main,
+                "model_hits": len(set(act_main) & set(pre_main)),
+                "grand_predicted": pre_g, "grand_actual": act_g,
+                "grand_hit": bool(act_g == pre_g),
+            })
+        else:
+            rows.append({
+                "date": date, "drawn": act_main, "predicted": None,
+                "model_hits": None, "grand_predicted": None, "grand_actual": act_g,
+                "grand_hit": None,
+            })
+    return rows
+
+
 def run_audit(df):
     """Score saved past predictions against actual draws vs. a random baseline."""
     if not FUTURE_PATH.exists():
@@ -213,9 +253,13 @@ def main():
     else:
         print("No overlapping past predictions to audit yet.")
 
+    payload = audit or {}
+    payload["recent_draws"] = build_recent_draws(df)
+    print(f"Recent draws for history table: {len(payload['recent_draws'])} (latest {payload['recent_draws'][0]['date']})")
+
     DOCS_DATA.mkdir(parents=True, exist_ok=True)
     (DOCS_DATA / "prediction.json").write_text(json.dumps(prediction, indent=2))
-    (DOCS_DATA / "audit.json").write_text(json.dumps(audit, indent=2) if audit else "null")
+    (DOCS_DATA / "audit.json").write_text(json.dumps(payload, indent=2))
 
 
 if __name__ == "__main__":
