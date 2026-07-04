@@ -1,0 +1,51 @@
+name: Daily Grand pipeline
+
+on:
+  schedule:
+    # Runs daily; scrape.py is idempotent (dedupes), so this is safe even on
+    # days with no new draw and immune to holiday-shifted draw dates.
+    - cron: "30 11 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-grand-pipeline
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Scrape latest draws
+        id: scrape
+        run: python scripts/scrape.py
+
+      - name: Retrain and predict
+        if: steps.scrape.outputs.new_draws == 'true'
+        run: python scripts/predict.py
+
+      - name: Send email notification
+        if: steps.scrape.outputs.new_draws == 'true'
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
+        run: python scripts/notify.py
+
+      - name: Commit updated data + dashboard
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update draws, prediction, and dashboard data"
+          file_pattern: "daily_grand_results.csv future_draws.csv docs/data/*.json"

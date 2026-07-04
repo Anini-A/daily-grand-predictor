@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Grand Predictor</title>
+<meta name="description" content="Automated Daily Grand lottery prediction dashboard with an honest scorecard.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2a78d6">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>🔮 Daily Grand Predictor</h1>
+    <span class="updated" id="page-note">auto-updated after every draw</span>
+  </header>
+
+  <section class="card hero" id="hero">
+    <div class="empty-state">Loading&hellip;</div>
+  </section>
+
+  <h2 class="section">Honest scorecard</h2>
+  <div class="kpi-row" id="kpis"></div>
+  <p class="verdict" id="verdict"></p>
+
+  <h2 class="section">Model vs. random baseline, per draw</h2>
+  <div class="card">
+    <div class="chart" id="chart"></div>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--accent)"></span>Model hits</span>
+      <span><span class="swatch" style="background:var(--gray-context)"></span>Random baseline</span>
+    </div>
+  </div>
+
+  <h2 class="section">Draw history</h2>
+  <div class="card" style="overflow-x:auto">
+    <table class="history">
+      <thead>
+        <tr><th>Date</th><th>Drawn</th><th>Predicted</th><th>Hits</th><th>Grand</th></tr>
+      </thead>
+      <tbody id="history-body"></tbody>
+    </table>
+  </div>
+
+  <footer>Data scraped from LotteryExtreme &middot; predictions regenerated automatically after each draw</footer>
+</div>
+
+<div id="tooltip" style="position:absolute;display:none;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:12px;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
+
+<script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+</script>
+</body>
+</html>

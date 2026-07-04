@@ -1,0 +1,541 @@
+{
+  "draws_audited": 23,
+  "model_avg_match": 0.478,
+  "theoretical_chance": 0.51,
+  "edge_over_chance": -0.032,
+  "z_score": -0.23,
+  "grand_hits": 4,
+  "grand_hits_chance": 3.3,
+  "verdict": "Indistinguishable from random - no statistical edge (|z| < 2), as expected for a fair lottery.",
+  "history": [
+    {
+      "date": "2026-06-11",
+      "drawn": [
+        4,
+        6,
+        12,
+        21,
+        38
+      ],
+      "predicted": [
+        8,
+        16,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.496,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 3,
+      "grand_actual": 2,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-05-18",
+      "drawn": [
+        6,
+        7,
+        28,
+        36,
+        48
+      ],
+      "predicted": [
+        8,
+        16,
+        25,
+        32,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.487,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 3,
+      "grand_actual": 3,
+      "grand_hit": true
+    },
+    {
+      "date": "2026-05-04",
+      "drawn": [
+        1,
+        16,
+        21,
+        32,
+        41
+      ],
+      "predicted": [
+        8,
+        16,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.505,
+      "beats_pct_random": 57.0,
+      "grand_predicted": 3,
+      "grand_actual": 4,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-04-13",
+      "drawn": [
+        2,
+        11,
+        19,
+        29,
+        30
+      ],
+      "predicted": [
+        7,
+        16,
+        24,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.525,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 3,
+      "grand_actual": 4,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-03-23",
+      "drawn": [
+        8,
+        17,
+        28,
+        37,
+        46
+      ],
+      "predicted": [
+        7,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.489,
+      "beats_pct_random": 58.8,
+      "grand_predicted": 3,
+      "grand_actual": 7,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-03-02",
+      "drawn": [
+        5,
+        15,
+        28,
+        31,
+        34
+      ],
+      "predicted": [
+        8,
+        16,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.507,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 3,
+      "grand_actual": 7,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-02-05",
+      "drawn": [
+        4,
+        22,
+        25,
+        33,
+        49
+      ],
+      "predicted": [
+        8,
+        16,
+        24,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.486,
+      "beats_pct_random": 59.1,
+      "grand_predicted": 3,
+      "grand_actual": 1,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-02-02",
+      "drawn": [
+        5,
+        14,
+        40,
+        43,
+        49
+      ],
+      "predicted": [
+        8,
+        16,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.473,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 3,
+      "grand_actual": 1,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-01-29",
+      "drawn": [
+        6,
+        12,
+        21,
+        37,
+        39
+      ],
+      "predicted": [
+        7,
+        16,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.507,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 3,
+      "grand_actual": 4,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-01-26",
+      "drawn": [
+        4,
+        6,
+        28,
+        45,
+        48
+      ],
+      "predicted": [
+        8,
+        16,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.514,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 3,
+      "grand_actual": 2,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-01-19",
+      "drawn": [
+        10,
+        17,
+        25,
+        32,
+        41
+      ],
+      "predicted": [
+        8,
+        17,
+        24,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.535,
+      "beats_pct_random": 55.6,
+      "grand_predicted": 3,
+      "grand_actual": 3,
+      "grand_hit": true
+    },
+    {
+      "date": "2026-01-12",
+      "drawn": [
+        5,
+        17,
+        19,
+        35,
+        45
+      ],
+      "predicted": [
+        7,
+        17,
+        24,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.5,
+      "beats_pct_random": 57.4,
+      "grand_predicted": 3,
+      "grand_actual": 2,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-08-11",
+      "drawn": [
+        1,
+        24,
+        38,
+        45,
+        47
+      ],
+      "predicted": [
+        7,
+        14,
+        23,
+        37,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.523,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 7,
+      "grand_actual": 6,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-08-07",
+      "drawn": [
+        7,
+        10,
+        19,
+        21,
+        37
+      ],
+      "predicted": [
+        7,
+        14,
+        23,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.494,
+      "beats_pct_random": 57.6,
+      "grand_predicted": 2,
+      "grand_actual": 1,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-08-04",
+      "drawn": [
+        9,
+        13,
+        23,
+        31,
+        42
+      ],
+      "predicted": [
+        7,
+        17,
+        23,
+        34,
+        47
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.506,
+      "beats_pct_random": 57.7,
+      "grand_predicted": 2,
+      "grand_actual": 7,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-07-17",
+      "drawn": [
+        7,
+        9,
+        14,
+        21,
+        22
+      ],
+      "predicted": [
+        7,
+        12,
+        17,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.521,
+      "beats_pct_random": 57.9,
+      "grand_predicted": 2,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-07-14",
+      "drawn": [
+        17,
+        22,
+        26,
+        37,
+        43
+      ],
+      "predicted": [
+        7,
+        14,
+        27,
+        34,
+        47
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.52,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 2,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-07-10",
+      "drawn": [
+        16,
+        25,
+        31,
+        42,
+        47
+      ],
+      "predicted": [
+        7,
+        14,
+        23,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.495,
+      "beats_pct_random": 58.0,
+      "grand_predicted": 2,
+      "grand_actual": 2,
+      "grand_hit": true
+    },
+    {
+      "date": "2025-07-07",
+      "drawn": [
+        2,
+        3,
+        8,
+        9,
+        35
+      ],
+      "predicted": [
+        12,
+        18,
+        27,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.513,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 2,
+      "grand_actual": 5,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-07-03",
+      "drawn": [
+        5,
+        20,
+        25,
+        27,
+        49
+      ],
+      "predicted": [
+        7,
+        17,
+        27,
+        37,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.502,
+      "beats_pct_random": 57.9,
+      "grand_predicted": 2,
+      "grand_actual": 5,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-06-30",
+      "drawn": [
+        11,
+        28,
+        44,
+        45,
+        47
+      ],
+      "predicted": [
+        2,
+        21,
+        32,
+        36,
+        43
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.465,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 27,
+      "grand_actual": 7,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-06-26",
+      "drawn": [
+        7,
+        12,
+        39,
+        42,
+        48
+      ],
+      "predicted": [
+        2,
+        17,
+        22,
+        26,
+        48
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.513,
+      "beats_pct_random": 56.3,
+      "grand_predicted": 2,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
+      "date": "2025-06-23",
+      "drawn": [
+        11,
+        14,
+        32,
+        35,
+        44
+      ],
+      "predicted": [
+        2,
+        16,
+        20,
+        42,
+        47
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.511,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 2,
+      "grand_actual": 2,
+      "grand_hit": true
+    }
+  ]
+}
