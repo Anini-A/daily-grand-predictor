@@ -88,9 +88,17 @@ def build_model():
     return MultiOutputRegressor(StackingRegressor(estimators=estimators, final_estimator=RidgeCV(), n_jobs=-1))
 
 
-def train_and_predict(df):
+def train_and_predict(df, target_idx=None):
+    """Train on all draws strictly before target_idx (defaults to len(df), i.e.
+    the true next unseen draw) and predict at target_idx. Since
+    add_multi_scale_features only ever looks backward from its index, this is
+    a valid walk-forward prediction with no leakage when used to backfill a
+    historical target_idx too.
+    """
+    if target_idx is None:
+        target_idx = len(df)
     X, y = [], []
-    for i in range(22, len(df)):
+    for i in range(22, target_idx):
         X.append(add_multi_scale_features(df, i))
         y.append(df.iloc[i][NUMBER_COLS].values)
     X, y = np.array(X), np.array(y)
@@ -98,8 +106,8 @@ def train_and_predict(df):
     model = build_model()
     model.fit(X, y)
 
-    next_feat = add_multi_scale_features(df, len(df)).reshape(1, -1)
-    return refine_prediction(model.predict(next_feat)[0])
+    feat = add_multi_scale_features(df, target_idx).reshape(1, -1)
+    return refine_prediction(model.predict(feat)[0])
 
 
 def next_target_date(df):

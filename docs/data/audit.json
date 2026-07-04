@@ -1,13 +1,151 @@
 {
-  "draws_audited": 23,
-  "model_avg_match": 0.478,
+  "draws_audited": 44,
+  "model_avg_match": 0.477,
   "theoretical_chance": 0.51,
-  "edge_over_chance": -0.032,
-  "z_score": -0.23,
-  "grand_hits": 4,
-  "grand_hits_chance": 3.3,
+  "edge_over_chance": -0.033,
+  "z_score": -0.33,
+  "grand_hits": 6,
+  "grand_hits_chance": 6.3,
   "verdict": "Indistinguishable from random - no statistical edge (|z| < 2), as expected for a fair lottery.",
   "history": [
+    {
+      "date": "2026-07-02",
+      "drawn": [
+        15,
+        22,
+        30,
+        31,
+        49
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.534,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 2,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-06-29",
+      "drawn": [
+        9,
+        14,
+        15,
+        41,
+        42
+      ],
+      "predicted": [
+        8,
+        16,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.519,
+      "beats_pct_random": 56.4,
+      "grand_predicted": 4,
+      "grand_actual": 6,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-06-25",
+      "drawn": [
+        8,
+        23,
+        24,
+        40,
+        42
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 2,
+      "random_baseline": 0.506,
+      "beats_pct_random": 93.2,
+      "grand_predicted": 4,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-06-22",
+      "drawn": [
+        1,
+        3,
+        11,
+        19,
+        31
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.537,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-06-18",
+      "drawn": [
+        25,
+        31,
+        32,
+        33,
+        41
+      ],
+      "predicted": [
+        8,
+        17,
+        26,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.546,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-06-15",
+      "drawn": [
+        12,
+        18,
+        19,
+        27,
+        39
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.54,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 7,
+      "grand_hit": false
+    },
     {
       "date": "2026-06-11",
       "drawn": [
@@ -25,11 +163,149 @@
         42
       ],
       "model_hits": 0,
-      "random_baseline": 0.496,
+      "random_baseline": 0.497,
       "beats_pct_random": 0.0,
       "grand_predicted": 3,
       "grand_actual": 2,
       "grand_hit": false
+    },
+    {
+      "date": "2026-06-08",
+      "drawn": [
+        3,
+        11,
+        19,
+        36,
+        37
+      ],
+      "predicted": [
+        8,
+        16,
+        26,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.524,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 5,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-06-04",
+      "drawn": [
+        5,
+        25,
+        29,
+        30,
+        45
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.494,
+      "beats_pct_random": 58.0,
+      "grand_predicted": 4,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-06-01",
+      "drawn": [
+        5,
+        12,
+        27,
+        29,
+        43
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.507,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 6,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-05-28",
+      "drawn": [
+        7,
+        11,
+        14,
+        33,
+        43
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.521,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 6,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-05-25",
+      "drawn": [
+        5,
+        8,
+        14,
+        35,
+        43
+      ],
+      "predicted": [
+        8,
+        17,
+        24,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.521,
+      "beats_pct_random": 56.2,
+      "grand_predicted": 4,
+      "grand_actual": 6,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-05-21",
+      "drawn": [
+        2,
+        10,
+        13,
+        26,
+        46
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.532,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 4,
+      "grand_hit": true
     },
     {
       "date": "2026-05-18",
@@ -48,11 +324,80 @@
         42
       ],
       "model_hits": 0,
-      "random_baseline": 0.487,
+      "random_baseline": 0.5,
       "beats_pct_random": 0.0,
       "grand_predicted": 3,
       "grand_actual": 3,
       "grand_hit": true
+    },
+    {
+      "date": "2026-05-14",
+      "drawn": [
+        19,
+        21,
+        37,
+        46,
+        47
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.504,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-05-11",
+      "drawn": [
+        17,
+        19,
+        20,
+        30,
+        31
+      ],
+      "predicted": [
+        8,
+        17,
+        26,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.518,
+      "beats_pct_random": 55.7,
+      "grand_predicted": 4,
+      "grand_actual": 2,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-05-07",
+      "drawn": [
+        4,
+        13,
+        14,
+        24,
+        29
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.504,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 1,
+      "grand_hit": false
     },
     {
       "date": "2026-05-04",
@@ -71,10 +416,125 @@
         42
       ],
       "model_hits": 1,
-      "random_baseline": 0.505,
-      "beats_pct_random": 57.0,
+      "random_baseline": 0.513,
+      "beats_pct_random": 56.3,
       "grand_predicted": 3,
       "grand_actual": 4,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-04-30",
+      "drawn": [
+        15,
+        21,
+        25,
+        43,
+        47
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        43
+      ],
+      "model_hits": 2,
+      "random_baseline": 0.515,
+      "beats_pct_random": 93.5,
+      "grand_predicted": 4,
+      "grand_actual": 7,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-04-27",
+      "drawn": [
+        5,
+        6,
+        17,
+        33,
+        48
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.512,
+      "beats_pct_random": 58.2,
+      "grand_predicted": 4,
+      "grand_actual": 4,
+      "grand_hit": true
+    },
+    {
+      "date": "2026-04-23",
+      "drawn": [
+        16,
+        22,
+        28,
+        29,
+        49
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.468,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 5,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-04-20",
+      "drawn": [
+        1,
+        29,
+        31,
+        42,
+        49
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        43
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.512,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 7,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-04-16",
+      "drawn": [
+        18,
+        21,
+        34,
+        37,
+        47
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.514,
+      "beats_pct_random": 57.4,
+      "grand_predicted": 4,
+      "grand_actual": 6,
       "grand_hit": false
     },
     {
@@ -94,10 +554,33 @@
         42
       ],
       "model_hits": 0,
-      "random_baseline": 0.525,
+      "random_baseline": 0.507,
       "beats_pct_random": 0.0,
       "grand_predicted": 3,
       "grand_actual": 4,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-04-09",
+      "drawn": [
+        11,
+        20,
+        35,
+        41,
+        45
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.466,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 3,
       "grand_hit": false
     },
     {
@@ -548,11 +1031,17 @@
         31,
         49
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 2,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-06-29",
@@ -563,11 +1052,17 @@
         41,
         42
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        16,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "grand_predicted": 4,
       "grand_actual": 6,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-06-25",
@@ -578,11 +1073,17 @@
         40,
         42
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 2,
+      "grand_predicted": 4,
       "grand_actual": 3,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-06-22",
@@ -593,11 +1094,17 @@
         19,
         31
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 3,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-06-18",
@@ -608,11 +1115,17 @@
         33,
         41
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        26,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 3,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-06-15",
@@ -623,11 +1136,17 @@
         27,
         39
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 7,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-06-11",
@@ -659,11 +1178,17 @@
         36,
         37
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        16,
+        26,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 5,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-06-04",
@@ -674,11 +1199,17 @@
         30,
         45
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "grand_predicted": 4,
       "grand_actual": 3,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-06-01",
@@ -689,11 +1220,17 @@
         29,
         43
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 6,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-05-28",
@@ -704,11 +1241,17 @@
         33,
         43
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 6,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-05-25",
@@ -719,11 +1262,17 @@
         35,
         43
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        24,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "grand_predicted": 4,
       "grand_actual": 6,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-05-21",
@@ -734,11 +1283,17 @@
         26,
         46
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 4,
-      "grand_hit": null
+      "grand_hit": true
     },
     {
       "date": "2026-05-18",
@@ -770,11 +1325,17 @@
         46,
         47
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 3,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-05-11",
@@ -785,11 +1346,17 @@
         30,
         31
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        26,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "grand_predicted": 4,
       "grand_actual": 2,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-05-07",
@@ -800,11 +1367,17 @@
         24,
         29
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 1,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-05-04",
@@ -836,11 +1409,17 @@
         43,
         47
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        43
+      ],
+      "model_hits": 2,
+      "grand_predicted": 4,
       "grand_actual": 7,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-04-27",
@@ -851,11 +1430,17 @@
         33,
         48
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "grand_predicted": 4,
       "grand_actual": 4,
-      "grand_hit": null
+      "grand_hit": true
     },
     {
       "date": "2026-04-23",
@@ -866,11 +1451,17 @@
         29,
         49
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 5,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-04-20",
@@ -881,11 +1472,17 @@
         42,
         49
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        43
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 7,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-04-16",
@@ -896,11 +1493,17 @@
         37,
         47
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 1,
+      "grand_predicted": 4,
       "grand_actual": 6,
-      "grand_hit": null
+      "grand_hit": false
     },
     {
       "date": "2026-04-13",
@@ -932,11 +1535,17 @@
         41,
         45
       ],
-      "predicted": null,
-      "model_hits": null,
-      "grand_predicted": null,
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
       "grand_actual": 3,
-      "grand_hit": null
+      "grand_hit": false
     }
   ]
 }
