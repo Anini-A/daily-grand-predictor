@@ -1,0 +1,114 @@
+{
+  "draws_analyzed": 1012,
+  "lucky_number": 14,
+  "lucky_number_count": 121,
+  "lucky_number_pct": 12.0,
+  "lucky_grand": 2,
+  "lucky_grand_count": 178,
+  "lucky_grand_pct": 17.6,
+  "hot_numbers": [
+    {
+      "number": 14,
+      "count": 121
+    },
+    {
+      "number": 37,
+      "count": 119
+    },
+    {
+      "number": 7,
+      "count": 119
+    },
+    {
+      "number": 43,
+      "count": 117
+    },
+    {
+      "number": 17,
+      "count": 116
+    },
+    {
+      "number": 2,
+      "count": 115
+    },
+    {
+      "number": 42,
+      "count": 114
+    },
+    {
+      "number": 1,
+      "count": 113
+    }
+  ],
+  "cold_numbers": [
+    {
+      "number": 40,
+      "count": 79
+    },
+    {
+      "number": 9,
+      "count": 86
+    },
+    {
+      "number": 16,
+      "count": 87
+    },
+    {
+      "number": 20,
+      "count": 90
+    },
+    {
+      "number": 26,
+      "count": 90
+    },
+    {
+      "number": 10,
+      "count": 93
+    },
+    {
+      "number": 36,
+      "count": 93
+    },
+    {
+      "number": 22,
+      "count": 94
+    }
+  ],
+  "hot_pairs": [
+    {
+      "numbers": [
+        35,
+        45
+      ],
+      "count": 19
+    },
+    {
+      "numbers": [
+        21,
+        37
+      ],
+      "count": 18
+    },
+    {
+      "numbers": [
+        6,
+        33
+      ],
+      "count": 18
+    },
+    {
+      "numbers": [
+        1,
+        46
+      ],
+      "count": 18
+    },
+    {
+      "numbers": [
+        14,
+        37
+      ],
+      "count": 18
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily Grand Predictor</title>
-<meta name="description" content="Automated Daily Grand lottery prediction dashboard with an honest scorecard.">
+<meta name="description" content="Automated Daily Grand lottery prediction dashboard with hot numbers and an honest scorecard.">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2a78d6">
 <link rel="stylesheet" href="style.css">
@@ -16,15 +16,44 @@
     <span class="updated" id="page-note">auto-updated after every draw</span>
   </header>
 
+  <section class="card lucky" id="lucky">
+    <div class="empty-state">Loading&hellip;</div>
+  </section>
+
+  <h2 class="section">🔥 Hot &amp; cold numbers</h2>
+  <div class="card">
+    <div class="hotcold" id="hotcold"></div>
+    <p class="hint">Based on all <span id="draws-analyzed">&mdash;</span> draws on record. Hot = drawn more often than average, cold = less.</p>
+  </div>
+
+  <h2 class="section">🤝 Hot pairs</h2>
+  <div class="card">
+    <div class="pairs" id="pairs"></div>
+    <p class="hint">Number pairs that have landed together in the same draw most often.</p>
+  </div>
+
+  <h2 class="section">🎯 AI's next pick</h2>
   <section class="card hero" id="hero">
     <div class="empty-state">Loading&hellip;</div>
   </section>
 
-  <h2 class="section">Honest scorecard</h2>
+  <h2 class="section">🤖 How the AI predicts</h2>
+  <div class="card explainer">
+    <p>Three machine-learning models &mdash; Random Forest, Gradient Boosting,
+    and XGBoost &mdash; get blended into one prediction. Each looks at a
+    different time horizon: the <strong>last 3 draws</strong> (recent form),
+    the <strong>last 22 draws'</strong> average and spread (medium-term trend),
+    and how <strong>overdue</strong> each number is based on its gap since it
+    last appeared (long-term memory).</p>
+    <p class="hint">Daily Grand is a fair, independent draw, so no model can
+    find a real edge &mdash; the scorecard below proves it honestly. Consider
+    this a fun extra, not a strategy.</p>
+  </div>
+
+  <h2 class="section">📊 Honest scorecard</h2>
   <div class="kpi-row" id="kpis"></div>
   <p class="verdict" id="verdict"></p>
 
-  <h2 class="section">Model vs. random baseline, per draw</h2>
   <div class="card">
     <div class="chart" id="chart"></div>
     <div class="legend">
@@ -43,7 +72,7 @@
     </table>
   </div>
 
-  <footer>Data scraped from LotteryExtreme &middot; predictions regenerated automatically after each draw</footer>
+  <footer>Data scraped from LotteryExtreme &middot; regenerated automatically after each draw</footer>
 </div>
 
 <div id="tooltip" style="position:absolute;display:none;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:12px;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>

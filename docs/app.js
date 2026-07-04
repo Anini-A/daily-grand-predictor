@@ -14,6 +14,79 @@ function ballHTML(n, hit, grand) {
   return `<div class="${cls.join(" ")}">${n}</div>`;
 }
 
+function renderLucky(stats) {
+  const el = document.getElementById("lucky");
+  if (!stats) {
+    el.innerHTML = `<div class="empty-state">Loading&hellip;</div>`;
+    return;
+  }
+  el.innerHTML = `
+    <div class="lucky-row">
+      <div class="lucky-item">
+        <div class="ball lucky-ball">${stats.lucky_number}</div>
+        <div class="lucky-copy">
+          <div class="lucky-title">Your lucky number</div>
+          <div class="lucky-sub">Drawn in ${stats.lucky_number_pct}% of all ${stats.draws_analyzed.toLocaleString()} draws &mdash; more than any other number.</div>
+        </div>
+      </div>
+      <div class="lucky-item">
+        <div class="ball lucky-ball grand">${stats.lucky_grand}</div>
+        <div class="lucky-copy">
+          <div class="lucky-title">Your lucky Grand Number</div>
+          <div class="lucky-sub">Drawn in ${stats.lucky_grand_pct}% of all ${stats.draws_analyzed.toLocaleString()} draws.</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderHotCold(stats) {
+  const el = document.getElementById("hotcold");
+  const counter = document.getElementById("draws-analyzed");
+  if (!stats) {
+    el.innerHTML = `<div class="empty-state">Loading&hellip;</div>`;
+    return;
+  }
+  counter.textContent = stats.draws_analyzed.toLocaleString();
+
+  const chipRow = (items, cls) => items.map((it) => `
+    <div class="chip ${cls}">
+      <span class="chip-n">${it.number}</span>
+      <span class="chip-count">${it.count}&times;</span>
+    </div>
+  `).join("");
+
+  el.innerHTML = `
+    <div class="hotcold-group">
+      <div class="hotcold-label hot">🔥 Hot</div>
+      <div class="chip-row">${chipRow(stats.hot_numbers, "hot")}</div>
+    </div>
+    <div class="hotcold-group">
+      <div class="hotcold-label cold">❄️ Cold</div>
+      <div class="chip-row">${chipRow(stats.cold_numbers, "cold")}</div>
+    </div>
+  `;
+}
+
+function renderPairs(stats) {
+  const el = document.getElementById("pairs");
+  if (!stats) {
+    el.innerHTML = `<div class="empty-state">Loading&hellip;</div>`;
+    return;
+  }
+  el.innerHTML = stats.hot_pairs.map((p, i) => `
+    <div class="pair-row">
+      <span class="pair-rank">#${i + 1}</span>
+      <span class="pair-nums">
+        <span class="n hit">${p.numbers[0]}</span>
+        <span class="pair-plus">+</span>
+        <span class="n hit">${p.numbers[1]}</span>
+      </span>
+      <span class="pair-count">together ${p.count}&times;</span>
+    </div>
+  `).join("");
+}
+
 function renderHero(prediction) {
   const el = document.getElementById("hero");
   if (!prediction) {
@@ -137,10 +210,14 @@ function renderHistory(audit) {
 }
 
 async function main() {
-  const [prediction, audit] = await Promise.all([
+  const [prediction, audit, stats] = await Promise.all([
     loadJSON("data/prediction.json"),
     loadJSON("data/audit.json"),
+    loadJSON("data/stats.json"),
   ]);
+  renderLucky(stats);
+  renderHotCold(stats);
+  renderPairs(stats);
   renderHero(prediction);
   renderKpis(audit);
   renderChart(audit);

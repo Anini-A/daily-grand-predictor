@@ -10,6 +10,10 @@
   --accent:         #2a78d6;
   --accent-soft:    #cde2fb;
   --gray-context:   #c3c2b7;
+  --hot:            #eb6834;
+  --hot-soft:       #fbe3d6;
+  --cold:           #1baf7a;
+  --cold-soft:      #d3f2e7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +29,10 @@
     --accent:         #3987e5;
     --accent-soft:    #184f95;
     --gray-context:   #383835;
+    --hot:            #d95926;
+    --hot-soft:       #4a2c1c;
+    --cold:           #199e70;
+    --cold-soft:      #123d31;
   }
 }
 
@@ -238,6 +246,146 @@ table.history .hit-count {
 .empty-state {
   color: var(--text-muted);
   font-size: 13px;
+}
+
+.hint {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin: 10px 0 0;
+}
+
+.card.explainer p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0 0 10px;
+}
+.card.explainer p:last-child { margin-bottom: 0; }
+
+/* Lucky number hero */
+.card.lucky {
+  background: linear-gradient(135deg, var(--hot-soft), var(--surface-1) 60%);
+}
+
+.lucky-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.lucky-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1 1 240px;
+}
+
+.ball.lucky-ball {
+  width: 56px;
+  height: 56px;
+  font-size: 22px;
+  background: var(--hot);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(235, 104, 52, 0.35);
+  flex-shrink: 0;
+}
+.ball.lucky-ball.grand {
+  background: var(--accent);
+  box-shadow: 0 4px 14px rgba(42, 120, 214, 0.35);
+}
+
+.lucky-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.lucky-sub {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Hot / cold chips */
+.hotcold-group {
+  margin-bottom: 14px;
+}
+.hotcold-group:last-child { margin-bottom: 0; }
+
+.hotcold-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.hotcold-label.hot { color: var(--hot); }
+.hotcold-label.cold { color: var(--cold); }
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.chip.hot { background: var(--hot-soft); color: var(--hot); }
+.chip.cold { background: var(--cold-soft); color: var(--cold); }
+.chip-n { font-weight: 700; }
+.chip-count { font-size: 11px; opacity: 0.8; }
+
+/* Hot pairs */
+.pair-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gridline);
+  font-size: 13px;
+}
+.pair-row:last-child { border-bottom: none; }
+
+.pair-rank {
+  color: var(--text-muted);
+  font-size: 12px;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.pair-nums {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pair-nums .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-weight: 600;
+  background: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+.pair-plus {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.pair-count {
+  color: var(--text-secondary);
+  margin-left: auto;
+  font-size: 12.5px;
 }
 
 footer {

@@ -31,6 +31,9 @@ jobs:
         id: scrape
         run: python scripts/scrape.py
 
+      - name: Compute hot numbers and pairs
+        run: python scripts/stats.py
+
       - name: Retrain and predict
         if: steps.scrape.outputs.new_draws == 'true'
         run: python scripts/predict.py
