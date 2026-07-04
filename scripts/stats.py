@@ -49,15 +49,6 @@ def main() -> None:
         "grand_number": lucky_grand,
         "counts": forever_counts,
         "grand_count": lucky_grand_count,
-        "analysis": (
-            f"Built from the 5 main numbers with the strongest historical showing "
-            f"({', '.join(str(n) for n in forever_numbers)}, each appearing "
-            f"{min(forever_counts)}-{max(forever_counts)} times across {n_draws} draws) "
-            f"plus the most frequent Grand Number ({lucky_grand}). Daily Grand is a "
-            f"fair, independent draw, so this doesn't predict anything - but if you're "
-            f"committing to one combination forever, anchoring to historical frequency "
-            f"is at least a reasoned starting point rather than a totally arbitrary one."
-        ),
     }
 
     stats = {

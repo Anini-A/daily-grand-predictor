@@ -15,67 +15,73 @@
 <div class="wrap">
   <header class="top glass">
     <h1>🔮 Daily Grand Predictor</h1>
-    <span class="updated" id="page-note">auto-updated after every draw</span>
+    <div class="header-right">
+      <span class="updated" id="page-note" data-i18n="header_updated">auto-updated after every draw</span>
+      <div class="lang-toggle" id="lang-toggle">
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+      </div>
+    </div>
   </header>
 
   <div class="dashboard">
 
     <section class="panel pos-l1">
-      <h2 class="section">🎯 AI's next pick</h2>
+      <h2 class="section" data-i18n="h_ai_next_pick">🎯 AI's next pick</h2>
       <div class="card glass long hero" id="hero">
         <div class="empty-state">Loading&hellip;</div>
       </div>
     </section>
 
     <section class="panel pos-r1">
-      <h2 class="section">🍀 Your lucky numbers</h2>
+      <h2 class="section" data-i18n="h_lucky_numbers">🍀 Your lucky numbers</h2>
       <div class="card glass short lucky" id="lucky">
         <div class="empty-state">Loading&hellip;</div>
       </div>
     </section>
 
     <section class="panel pos-l2">
-      <h2 class="section">🤖 How the AI predicts</h2>
+      <h2 class="section" data-i18n="h_how_ai_predicts">🤖 How the AI predicts</h2>
       <div class="card glass long explainer">
-        <p>Three machine-learning models &mdash; Random Forest, Gradient Boosting,
+        <p data-i18n="explainer_p1">Three machine-learning models &mdash; Random Forest, Gradient Boosting,
         and XGBoost &mdash; get blended into one prediction. Each looks at a
         different time horizon: the <strong>last 3 draws</strong> (recent form),
         the <strong>last 22 draws'</strong> average and spread (medium-term trend),
         and how <strong>overdue</strong> each number is based on its gap since it
         last appeared (long-term memory).</p>
-        <p class="hint">Daily Grand is a fair, independent draw, so no model can
+        <p class="hint" data-i18n="explainer_p2">Daily Grand is a fair, independent draw, so no model can
         find a real edge &mdash; the scorecard below proves it honestly. Consider
         this a fun extra, not a strategy.</p>
       </div>
     </section>
 
     <section class="panel pos-r2">
-      <h2 class="section">🔒 AI's forever pick</h2>
+      <h2 class="section" data-i18n="h_forever_pick">🔒 AI's forever pick</h2>
       <div class="card glass short forever" id="forever">
         <div class="empty-state">Loading&hellip;</div>
       </div>
     </section>
 
     <section class="panel pos-l3">
-      <h2 class="section">🔥 Hot &amp; cold numbers</h2>
+      <h2 class="section" data-i18n="h_hot_cold">🔥 Hot &amp; cold numbers</h2>
       <div class="card glass long">
         <div class="hotcold" id="hotcold"></div>
-        <p class="hint">Based on all <span id="draws-analyzed">&mdash;</span> draws on record. Hot = drawn more often than average, cold = less.</p>
+        <p class="hint" id="hotcold-hint"></p>
       </div>
     </section>
 
     <section class="panel pos-r3">
-      <h2 class="section">🤝 Hot pairs</h2>
+      <h2 class="section" data-i18n="h_hot_pairs">🤝 Hot pairs</h2>
       <div class="card glass short">
         <div class="pairs" id="pairs"></div>
-        <p class="hint">Number pairs that have landed together in the same draw most often.</p>
+        <p class="hint" data-i18n="pairs_hint">Number pairs that have landed together in the same draw most often.</p>
       </div>
     </section>
 
   </div>
 
   <section class="panel panel--full">
-    <h2 class="section">📊 Honest scorecard</h2>
+    <h2 class="section" data-i18n="h_honest_scorecard">📊 Honest scorecard</h2>
     <div class="card glass long">
       <div class="kpi-row" id="kpis"></div>
       <p class="verdict" id="verdict"></p>
@@ -83,33 +89,40 @@
   </section>
 
   <section class="panel panel--full">
-    <h2 class="section">Model vs. random baseline, per draw</h2>
+    <h2 class="section" data-i18n="h_chart_title">Model vs. random baseline, per draw</h2>
     <div class="card glass">
       <div class="chart" id="chart"></div>
       <div class="legend">
-        <span><span class="swatch" style="background:var(--accent)"></span>Model hits</span>
-        <span><span class="swatch" style="background:var(--gray-context)"></span>Random baseline</span>
+        <span><span class="swatch" style="background:var(--accent)"></span><span data-i18n="legend_model_hits">Model hits</span></span>
+        <span><span class="swatch" style="background:var(--gray-context)"></span><span data-i18n="legend_random_baseline">Random baseline</span></span>
       </div>
     </div>
   </section>
 
   <section class="panel panel--full">
-    <h2 class="section">Draw history</h2>
+    <h2 class="section" data-i18n="h_history_title">Draw history</h2>
     <div class="card glass" style="overflow-x:auto">
       <table class="history">
         <thead>
-          <tr><th>Date</th><th>Drawn</th><th>Predicted</th><th>Hits</th><th>Grand</th></tr>
+          <tr>
+            <th data-i18n="th_date">Date</th>
+            <th data-i18n="th_drawn">Drawn</th>
+            <th data-i18n="th_predicted">Predicted</th>
+            <th data-i18n="th_hits">Hits</th>
+            <th data-i18n="th_grand">Grand</th>
+          </tr>
         </thead>
         <tbody id="history-body"></tbody>
       </table>
     </div>
   </section>
 
-  <footer>Data scraped from LotteryExtreme &middot; regenerated automatically after each draw</footer>
+  <footer data-i18n="footer">Data scraped from LotteryExtreme &middot; regenerated automatically after each draw</footer>
 </div>
 
 <div id="tooltip" style="position:absolute;display:none;background:var(--surface-1);border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:12px;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,0.15);"></div>
 
+<script src="i18n.js"></script>
 <script src="app.js"></script>
 <script>
 if ("serviceWorker" in navigator) {

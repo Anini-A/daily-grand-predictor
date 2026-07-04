@@ -6,7 +6,7 @@
   "z_score": -0.33,
   "grand_hits": 6,
   "grand_hits_chance": 6.3,
-  "verdict": "Indistinguishable from random - no statistical edge (|z| < 2), as expected for a fair lottery.",
+  "verdict_key": "chance",
   "history": [
     {
       "date": "2026-07-02",

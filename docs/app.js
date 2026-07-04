@@ -14,10 +14,10 @@ function ballHTML(n, hit, grand) {
   return `<div class="${cls.join(" ")}">${n}</div>`;
 }
 
-function renderLucky(stats) {
+function renderLucky(lang, stats) {
   const el = document.getElementById("lucky");
   if (!stats) {
-    el.innerHTML = `<div class="empty-state">Loading&hellip;</div>`;
+    el.innerHTML = `<div class="empty-state">${t(lang, "loading")}</div>`;
     return;
   }
   el.innerHTML = `
@@ -25,29 +25,29 @@ function renderLucky(stats) {
       <div class="lucky-item">
         <div class="ball lucky-ball">${stats.lucky_number}</div>
         <div class="lucky-copy">
-          <div class="lucky-title">Your lucky number</div>
-          <div class="lucky-sub">Drawn in ${stats.lucky_number_pct}% of all ${stats.draws_analyzed.toLocaleString()} draws &mdash; more than any other number.</div>
+          <div class="lucky-title">${t(lang, "lucky_title_number")}</div>
+          <div class="lucky-sub">${t(lang, "lucky_sub_number", { pct: stats.lucky_number_pct, n: stats.draws_analyzed.toLocaleString(localeFor(lang)) })}</div>
         </div>
       </div>
       <div class="lucky-item">
         <div class="ball lucky-ball grand">${stats.lucky_grand}</div>
         <div class="lucky-copy">
-          <div class="lucky-title">Your lucky Grand Number</div>
-          <div class="lucky-sub">Drawn in ${stats.lucky_grand_pct}% of all ${stats.draws_analyzed.toLocaleString()} draws.</div>
+          <div class="lucky-title">${t(lang, "lucky_title_grand")}</div>
+          <div class="lucky-sub">${t(lang, "lucky_sub_grand", { pct: stats.lucky_grand_pct, n: stats.draws_analyzed.toLocaleString(localeFor(lang)) })}</div>
         </div>
       </div>
     </div>
   `;
 }
 
-function renderHotCold(stats) {
+function renderHotCold(lang, stats) {
   const el = document.getElementById("hotcold");
-  const counter = document.getElementById("draws-analyzed");
+  const hint = document.getElementById("hotcold-hint");
   if (!stats) {
-    el.innerHTML = `<div class="empty-state">Loading&hellip;</div>`;
+    el.innerHTML = `<div class="empty-state">${t(lang, "loading")}</div>`;
     return;
   }
-  counter.textContent = stats.draws_analyzed.toLocaleString();
+  hint.innerHTML = t(lang, "hotcold_hint", { n: stats.draws_analyzed.toLocaleString(localeFor(lang)) });
 
   const chipRow = (items, cls) => items.map((it) => `
     <div class="chip ${cls}">
@@ -68,10 +68,10 @@ function renderHotCold(stats) {
   `;
 }
 
-function renderPairs(stats) {
+function renderPairs(lang, stats) {
   const el = document.getElementById("pairs");
   if (!stats) {
-    el.innerHTML = `<div class="empty-state">Loading&hellip;</div>`;
+    el.innerHTML = `<div class="empty-state">${t(lang, "loading")}</div>`;
     return;
   }
   el.innerHTML = stats.hot_pairs.map((p, i) => `
@@ -82,59 +82,67 @@ function renderPairs(stats) {
         <span class="pair-plus">+</span>
         <span class="n hit">${p.numbers[1]}</span>
       </span>
-      <span class="pair-count">together ${p.count}&times;</span>
+      <span class="pair-count">${t(lang, "pairs_together", { n: p.count })}</span>
     </div>
   `).join("");
 }
 
-function renderForever(stats) {
+function renderForever(lang, stats) {
   const el = document.getElementById("forever");
   if (!stats) {
-    el.innerHTML = `<div class="empty-state">Loading&hellip;</div>`;
+    el.innerHTML = `<div class="empty-state">${t(lang, "loading")}</div>`;
     return;
   }
   const pick = stats.forever_pick;
+  const analysis = t(lang, "forever_analysis", {
+    numbers: pick.numbers.join(", "),
+    min: Math.min(...pick.counts),
+    max: Math.max(...pick.counts),
+    n: stats.draws_analyzed.toLocaleString(localeFor(lang)),
+    grand: pick.grand_number,
+  });
   el.innerHTML = `
     <div class="forever-row">
       ${pick.numbers.map((n) => `<div class="ball forever-ball">${n}</div>`).join("")}
       <div class="ball forever-ball grand">${pick.grand_number}</div>
     </div>
-    <p class="forever-analysis">${pick.analysis}</p>
+    <p class="forever-analysis">${analysis}</p>
   `;
 }
 
-function renderHero(prediction) {
+function renderHero(lang, prediction) {
   const el = document.getElementById("hero");
   if (!prediction) {
-    el.innerHTML = `<div class="empty-state">No prediction available yet.</div>`;
+    el.innerHTML = `<div class="empty-state">${t(lang, "hero_empty")}</div>`;
     return;
   }
-  const dateLabel = new Date(prediction.target_date + "T00:00:00").toLocaleDateString(undefined, {
+  const dateLabel = new Date(prediction.target_date + "T00:00:00").toLocaleDateString(localeFor(lang), {
     weekday: "long", year: "numeric", month: "long", day: "numeric",
   });
+  const generatedLabel = new Date(prediction.generated_at).toLocaleString(localeFor(lang));
   el.innerHTML = `
-    <div class="label">Next predicted draw &mdash; ${dateLabel}</div>
+    <div class="label">${t(lang, "hero_label", { date: dateLabel })}</div>
     <div class="balls">
       ${prediction.numbers.map((n) => ballHTML(n, false, false)).join("")}
       ${ballHTML(prediction.grand_number, false, true)}
     </div>
-    <div class="date">Generated ${new Date(prediction.generated_at).toLocaleString()}</div>
-    <div class="disclaimer">Daily Grand is a fair, independent draw. This pick is for fun &mdash;
-      see the honest scorecard below for how the model actually performs.</div>
+    <div class="date">${t(lang, "hero_generated", { datetime: generatedLabel })}</div>
+    <div class="disclaimer">${t(lang, "hero_disclaimer")}</div>
   `;
 }
 
-function renderKpis(audit) {
+function renderKpis(lang, audit) {
   const el = document.getElementById("kpis");
   if (!audit || audit.draws_audited == null) {
-    el.innerHTML = `<div class="empty-state">Not enough history to audit yet.</div>`;
+    el.innerHTML = `<div class="empty-state">${t(lang, "kpi_empty")}</div>`;
+    document.getElementById("verdict").textContent = "";
     return;
   }
   const rows = [
-    ["Draws audited", audit.draws_audited, ""],
-    ["Model avg match", `${audit.model_avg_match}/5`, `chance: ${audit.theoretical_chance}/5`],
-    ["Edge over chance", `${audit.edge_over_chance >= 0 ? "+" : ""}${audit.edge_over_chance}`, `z = ${audit.z_score}`],
-    ["Grand Number hits", `${audit.grand_hits}/${audit.draws_audited}`, `chance: ${audit.grand_hits_chance}`],
+    [t(lang, "kpi_draws_audited"), audit.draws_audited, ""],
+    [t(lang, "kpi_model_avg"), `${audit.model_avg_match}/5`, t(lang, "kpi_chance_of", { v: audit.theoretical_chance })],
+    [t(lang, "kpi_edge"), `${audit.edge_over_chance >= 0 ? "+" : ""}${audit.edge_over_chance}`, t(lang, "kpi_z", { v: audit.z_score })],
+    [t(lang, "kpi_grand_hits"), `${audit.grand_hits}/${audit.draws_audited}`, t(lang, "kpi_chance", { v: audit.grand_hits_chance })],
   ];
   el.innerHTML = rows.map(([label, value, sub]) => `
     <div class="kpi">
@@ -144,14 +152,15 @@ function renderKpis(audit) {
     </div>
   `).join("");
 
-  document.getElementById("verdict").textContent = audit.verdict;
+  const verdictKey = { chance: "verdict_chance", above: "verdict_above", below: "verdict_below" }[audit.verdict_key];
+  document.getElementById("verdict").textContent = verdictKey ? t(lang, verdictKey, { z: audit.z_score }) : "";
 }
 
-function renderChart(audit) {
+function renderChart(lang, audit) {
   const container = document.getElementById("chart");
   const tooltip = document.getElementById("tooltip");
   if (!audit || !audit.history || !audit.history.length) {
-    container.innerHTML = `<div class="empty-state">No draws to chart yet.</div>`;
+    container.innerHTML = `<div class="empty-state">${t(lang, "chart_empty")}</div>`;
     return;
   }
 
@@ -188,9 +197,9 @@ function renderChart(audit) {
 
   container.querySelectorAll(".hit-target").forEach((rect) => {
     const d = history[+rect.dataset.i];
-    rect.addEventListener("mouseenter", (e) => {
+    rect.addEventListener("mouseenter", () => {
       tooltip.style.display = "block";
-      tooltip.innerHTML = `<strong>${d.date}</strong><br>Model: ${d.model_hits}/5 &middot; Random avg: ${d.random_baseline}/5`;
+      tooltip.innerHTML = `<strong>${d.date}</strong><br>${t(lang, "chart_tooltip", { hits: d.model_hits, baseline: d.random_baseline })}`;
     });
     rect.addEventListener("mousemove", (e) => {
       tooltip.style.left = `${e.pageX + 12}px`;
@@ -202,11 +211,11 @@ function renderChart(audit) {
   });
 }
 
-function renderHistory(audit) {
+function renderHistory(lang, audit) {
   const el = document.getElementById("history-body");
   const draws = audit && audit.recent_draws;
   if (!draws || !draws.length) {
-    el.innerHTML = `<tr><td class="empty-state">No draws to show yet.</td></tr>`;
+    el.innerHTML = `<tr><td class="empty-state">${t(lang, "history_empty")}</td></tr>`;
     return;
   }
   el.innerHTML = draws.map((d) => {
@@ -219,7 +228,7 @@ function renderHistory(audit) {
       : `<span class="empty-state">&mdash;</span>`;
     const hits = hasPrediction ? `${d.model_hits}/5` : "&mdash;";
     const grandBadge = d.grand_hit
-      ? `<span class="grand-badge hit">🎯 Hit</span>`
+      ? `<span class="grand-badge hit">${t(lang, "grand_hit")}</span>`
       : `<span class="grand-badge miss">&mdash;</span>`;
     const grand = hasPrediction
       ? `${grandBadge}<span class="grand-compare">(${d.grand_predicted} vs ${d.grand_actual})</span>`
@@ -236,20 +245,37 @@ function renderHistory(audit) {
   }).join("");
 }
 
+let _prediction = null, _audit = null, _stats = null;
+
+function renderAll(lang) {
+  applyStaticTranslations(lang);
+  renderLucky(lang, _stats);
+  renderForever(lang, _stats);
+  renderHotCold(lang, _stats);
+  renderPairs(lang, _stats);
+  renderHero(lang, _prediction);
+  renderKpis(lang, _audit);
+  renderChart(lang, _audit);
+  renderHistory(lang, _audit);
+}
+
 async function main() {
-  const [prediction, audit, stats] = await Promise.all([
+  [_prediction, _audit, _stats] = await Promise.all([
     loadJSON("data/prediction.json"),
     loadJSON("data/audit.json"),
     loadJSON("data/stats.json"),
   ]);
-  renderLucky(stats);
-  renderForever(stats);
-  renderHotCold(stats);
-  renderPairs(stats);
-  renderHero(prediction);
-  renderKpis(audit);
-  renderChart(audit);
-  renderHistory(audit);
+
+  let lang = getLang();
+  renderAll(lang);
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      lang = btn.dataset.lang;
+      setLang(lang);
+      renderAll(lang);
+    });
+  });
 }
 
 main();

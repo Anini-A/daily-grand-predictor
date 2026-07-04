@@ -218,11 +218,11 @@ def run_audit(df):
     z = edge / se if se else 0.0
 
     if abs(z) < 2:
-        verdict = "Indistinguishable from random - no statistical edge (|z| < 2), as expected for a fair lottery."
+        verdict_key = "chance"
     elif z >= 2:
-        verdict = f"Above chance at z={z:.2f}, but with small samples this happens by luck ~2.5% of the time and will regress toward 0.51."
+        verdict_key = "above"
     else:
-        verdict = f"Below chance at z={z:.2f} - also just luck; underperformance is as common as overperformance for random picks."
+        verdict_key = "below"
 
     return {
         "draws_audited": n,
@@ -232,7 +232,7 @@ def run_audit(df):
         "z_score": round(float(z), 2),
         "grand_hits": grand_hits,
         "grand_hits_chance": round(n / 7, 1),
-        "verdict": verdict,
+        "verdict_key": verdict_key,
         "history": sorted(rows, key=lambda r: r["date"], reverse=True),
     }
 
@@ -257,7 +257,7 @@ def main():
     audit = run_audit(df)
     if audit:
         print(f"Audit: {audit['draws_audited']} draws, model avg {audit['model_avg_match']}/5, z={audit['z_score']}")
-        print(audit["verdict"])
+        print(f"Verdict: {audit['verdict_key']}")
     else:
         print("No overlapping past predictions to audit yet.")
 

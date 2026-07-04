@@ -102,6 +102,43 @@ header.top .updated {
   color: var(--text-muted);
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 2px;
+  background: var(--kpi-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px;
+}
+
+.lang-btn {
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 620px) {
+  header.top .updated { display: none; }
+}
+
 /* Liquid Glass material - applied to header + all .card surfaces. */
 .glass {
   background: var(--glass-bg);
