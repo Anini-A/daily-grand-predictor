@@ -218,8 +218,11 @@ function renderHistory(audit) {
       ? d.predicted.map((x) => `<span class="n ${drawnSet.has(x) ? "hit" : ""}">${x}</span>`).join("")
       : `<span class="empty-state">&mdash;</span>`;
     const hits = hasPrediction ? `${d.model_hits}/5` : "&mdash;";
+    const grandBadge = d.grand_hit
+      ? `<span class="grand-badge hit">🎯 Hit</span>`
+      : `<span class="grand-badge miss">&mdash;</span>`;
     const grand = hasPrediction
-      ? `${d.grand_hit ? "✓" : "—"} (${d.grand_predicted} vs ${d.grand_actual})`
+      ? `${grandBadge}<span class="grand-compare">(${d.grand_predicted} vs ${d.grand_actual})</span>`
       : `${d.grand_actual}`;
     return `
       <tr>

@@ -330,6 +330,32 @@ table.history .hit-count {
   font-weight: 600;
 }
 
+.grand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.grand-badge.hit {
+  background: rgba(12, 163, 12, 0.14);
+  color: #0ca30c;
+}
+.grand-badge.miss {
+  color: var(--text-muted);
+  font-weight: 400;
+  padding-left: 0;
+}
+
+.grand-compare {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-left: 6px;
+}
+
 .empty-state {
   color: var(--text-muted);
   font-size: 13px;
