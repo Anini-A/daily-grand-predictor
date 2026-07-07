@@ -94,8 +94,9 @@ function renderForever(lang, stats) {
     return;
   }
   const pick = stats.forever_pick;
+  const sortedNumbers = [...pick.numbers].sort((a, b) => a - b);
   const analysis = t(lang, "forever_analysis", {
-    numbers: pick.numbers.join(", "),
+    numbers: sortedNumbers.join(", "),
     min: Math.min(...pick.counts),
     max: Math.max(...pick.counts),
     n: stats.draws_analyzed.toLocaleString(localeFor(lang)),
@@ -103,7 +104,7 @@ function renderForever(lang, stats) {
   });
   el.innerHTML = `
     <div class="forever-row">
-      ${pick.numbers.map((n) => `<div class="ball forever-ball">${n}</div>`).join("")}
+      ${sortedNumbers.map((n) => `<div class="ball forever-ball">${n}</div>`).join("")}
       <div class="ball forever-ball grand">${pick.grand_number}</div>
     </div>
     <p class="forever-analysis">${analysis}</p>
