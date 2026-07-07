@@ -14,6 +14,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_DATA = ROOT / "docs" / "data"
 
+VERDICT_TEXT = {
+    "chance": "Indistinguishable from random - no statistical edge (|z| < 2), as expected for a fair lottery.",
+    "above": "Above chance at z={z}, but with small samples this happens by luck ~2.5% of the time and will regress toward 0.51.",
+    "below": "Below chance at z={z} - also just luck; underperformance is as common as overperformance for random picks.",
+}
+
 
 def build_body(prediction: dict, audit: dict | None, dashboard_url: str) -> str:
     numbers = " - ".join(str(n) for n in prediction["numbers"])
@@ -28,7 +34,9 @@ def build_body(prediction: dict, audit: dict | None, dashboard_url: str) -> str:
             f"Honest track record: {audit['model_avg_match']}/5 avg match over "
             f"{audit['draws_audited']} draws (z={audit['z_score']})."
         )
-        lines.append(audit["verdict"])
+        verdict_text = VERDICT_TEXT.get(audit.get("verdict_key"))
+        if verdict_text:
+            lines.append(verdict_text.format(z=audit["z_score"]))
         lines.append("")
     lines.append("This is a fair, independent lottery draw - treat this as a fun pick, not a real edge.")
     if dashboard_url:
