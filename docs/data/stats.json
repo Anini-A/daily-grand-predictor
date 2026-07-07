@@ -1,8 +1,8 @@
 {
-  "draws_analyzed": 1012,
+  "draws_analyzed": 1013,
   "lucky_number": 14,
   "lucky_number_count": 121,
-  "lucky_number_pct": 12.0,
+  "lucky_number_pct": 11.9,
   "lucky_grand": 2,
   "lucky_grand_count": 178,
   "lucky_grand_pct": 17.6,
@@ -43,7 +43,7 @@
   "cold_numbers": [
     {
       "number": 40,
-      "count": 79
+      "count": 80
     },
     {
       "number": 9,
@@ -51,7 +51,7 @@
     },
     {
       "number": 16,
-      "count": 87
+      "count": 88
     },
     {
       "number": 20,
