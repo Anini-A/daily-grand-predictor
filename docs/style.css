@@ -76,21 +76,18 @@ body {
 .wrap {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 90px 32px 64px;
+  padding: 24px 32px 64px;
 }
 
 header.top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 24px;
   padding: 14px 22px;
   border-radius: 999px;
-  position: fixed;
+  position: sticky;
   top: 12px;
-  left: 32px;
-  right: 32px;
-  max-width: 1200px;
-  margin: 0 auto;
   z-index: 10;
 }
 
@@ -583,6 +580,6 @@ footer {
 }
 
 @media (max-width: 620px) {
-  .wrap { padding: 78px 16px 48px; }
-  header.top { border-radius: 20px; left: 16px; right: 16px; }
+  .wrap { padding: 16px 16px 48px; }
+  header.top { border-radius: 20px; position: static; }
 }
