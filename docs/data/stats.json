@@ -1,5 +1,5 @@
 {
-  "draws_analyzed": 1015,
+  "draws_analyzed": 1016,
   "lucky_number": 14,
   "lucky_number_count": 122,
   "lucky_number_pct": 12.0,
@@ -28,12 +28,12 @@
       "count": 116
     },
     {
-      "number": 2,
+      "number": 42,
       "count": 115
     },
     {
-      "number": 42,
-      "count": 114
+      "number": 2,
+      "count": 115
     },
     {
       "number": 1,
@@ -47,7 +47,7 @@
     },
     {
       "number": 9,
-      "count": 86
+      "count": 87
     },
     {
       "number": 16,
