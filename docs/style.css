@@ -388,44 +388,30 @@ table.history .hit-count {
   box-shadow: 0 0 0 2px var(--accent-soft);
 }
 
-.grand-cell {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+/* Space separating the main numbers from the Grand number (and main pips
+   from the Grand pip). */
+.grand-gap {
+  display: inline-block;
+  width: 14px;
 }
-.grand-cell .gball,
-.gball.solo {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12.5px;
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
+
+/* The Grand number sits in the same row as the mains but is marked with a
+   ring so it reads as separate. When it's a hit it fills solid like the
+   Grand ball elsewhere on the page. */
+table.history .n.grand-n {
+  box-shadow: inset 0 0 0 1.5px var(--baseline);
+  color: var(--text-secondary);
 }
-.grand-cell .gball.pred {
-  background: transparent;
-  border: 1.5px dashed var(--baseline);
-  color: var(--text-muted);
+table.history .n.grand-n.hit {
+  background: var(--accent);
+  box-shadow: none;
+  color: #fff;
 }
-.grand-cell .gball.act,
-.gball.solo {
-  background: var(--gray-context);
-  color: var(--text-primary);
+
+.hit-meter .grand-pip.on {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
 }
-.grand-cell .gsep {
-  color: var(--text-muted);
-  font-size: 13px;
-}
-.grand-cell.matched .gball {
-  background: rgba(12, 163, 12, 0.14);
-  border: 1.5px solid #0ca30c;
-  color: #0ca30c;
-}
-.grand-cell.matched .gsep { color: #0ca30c; }
-.grand-cell .grand-target { font-size: 13px; line-height: 1; }
 
 .grand-badge {
   display: inline-flex;

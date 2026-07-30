@@ -8,10 +8,12 @@ async function loadJSON(path) {
   }
 }
 
-function hitMeterHTML(n) {
+function hitMeterHTML(n, grandHit) {
   let pips = "";
   for (let i = 0; i < 5; i++) pips += `<span class="pip ${i < n ? "on" : ""}"></span>`;
-  return `<div class="hit-meter" title="${n}/5">${pips}</div>`;
+  const grandPip = `<span class="pip grand-pip ${grandHit ? "on" : ""}"></span>`;
+  const title = `${n}/5 main${grandHit ? " + Grand" : ""}`;
+  return `<div class="hit-meter" title="${title}"><span class="pips">${pips}</span><span class="grand-gap"></span>${grandPip}</div>`;
 }
 
 function ballHTML(n, hit, grand) {
@@ -229,26 +231,27 @@ function renderHistory(lang, audit) {
     const hasPrediction = Array.isArray(d.predicted);
     const drawnSet = new Set(d.drawn);
     const predSet = hasPrediction ? new Set(d.predicted) : new Set();
-    const drawnHtml = d.drawn.map((x) => `<span class="n ${predSet.has(x) ? "hit" : ""}">${x}</span>`).join("");
-    const predHtml = hasPrediction
-      ? d.predicted.map((x) => `<span class="n ${drawnSet.has(x) ? "hit" : ""}">${x}</span>`).join("")
-      : `<span class="empty-state">&mdash;</span>`;
-    const hits = hasPrediction ? hitMeterHTML(d.model_hits) : "&mdash;";
-    const grand = hasPrediction
-      ? `<span class="grand-cell ${d.grand_hit ? "matched" : ""}" title="${t(lang, "grand_tip", { pred: d.grand_predicted, act: d.grand_actual })}">
-           ${d.grand_hit ? '<span class="grand-target">🎯</span>' : ""}
-           <span class="gball pred">${d.grand_predicted}</span>
-           <span class="gsep">&rarr;</span>
-           <span class="gball act">${d.grand_actual}</span>
-         </span>`
-      : `<span class="gball act solo">${d.grand_actual}</span>`;
+
+    const drawnMain = d.drawn.map((x) => `<span class="n ${predSet.has(x) ? "hit" : ""}">${x}</span>`).join("");
+    const drawnGrand = `<span class="n grand-n ${hasPrediction && d.grand_hit ? "hit" : ""}">${d.grand_actual}</span>`;
+    const drawnHtml = `${drawnMain}<span class="grand-gap"></span>${drawnGrand}`;
+
+    let predHtml;
+    if (hasPrediction) {
+      const predMain = d.predicted.map((x) => `<span class="n ${drawnSet.has(x) ? "hit" : ""}">${x}</span>`).join("");
+      const predGrand = `<span class="n grand-n ${d.grand_hit ? "hit" : ""}">${d.grand_predicted}</span>`;
+      predHtml = `${predMain}<span class="grand-gap"></span>${predGrand}`;
+    } else {
+      predHtml = `<span class="empty-state">&mdash;</span>`;
+    }
+
+    const hits = hasPrediction ? hitMeterHTML(d.model_hits, d.grand_hit) : "&mdash;";
     return `
       <tr>
         <td>${d.date}</td>
         <td><div class="nums">${drawnHtml}</div></td>
         <td><div class="nums">${predHtml}</div></td>
         <td class="hit-count">${hits}</td>
-        <td>${grand}</td>
       </tr>
     `;
   }).join("");
