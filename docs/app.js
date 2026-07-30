@@ -8,14 +8,6 @@ async function loadJSON(path) {
   }
 }
 
-function hitMeterHTML(n, grandHit) {
-  let pips = "";
-  for (let i = 0; i < 5; i++) pips += `<span class="pip ${i < n ? "on" : ""}"></span>`;
-  const grandPip = `<span class="pip grand-pip ${grandHit ? "on" : ""}"></span>`;
-  const title = `${n}/5 main${grandHit ? " + Grand" : ""}`;
-  return `<div class="hit-meter" title="${title}"><span class="pips">${pips}</span><span class="grand-gap"></span>${grandPip}</div>`;
-}
-
 function ballHTML(n, hit, grand) {
   const cls = ["ball"];
   if (grand) cls.push("grand");
@@ -245,13 +237,11 @@ function renderHistory(lang, audit) {
       predHtml = `<span class="empty-state">&mdash;</span>`;
     }
 
-    const hits = hasPrediction ? hitMeterHTML(d.model_hits, d.grand_hit) : "&mdash;";
     return `
       <tr>
         <td>${d.date}</td>
         <td><div class="nums">${drawnHtml}</div></td>
         <td><div class="nums">${predHtml}</div></td>
-        <td class="hit-count">${hits}</td>
       </tr>
     `;
   }).join("");
