@@ -367,6 +367,33 @@ table.history .hit-count {
   font-weight: 600;
 }
 
+.hit-meter {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+.hit-meter .pips {
+  display: inline-flex;
+  gap: 5px;
+}
+.hit-meter .pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gridline);
+  transition: background 0.15s;
+}
+.hit-meter .pip.on {
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+.hit-meter .hit-frac {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
 .grand-badge {
   display: inline-flex;
   align-items: center;
@@ -411,6 +438,35 @@ table.history .hit-count {
   margin: 0 0 10px;
 }
 .card.explainer p:last-child { margin-bottom: 0; }
+
+.why-change {
+  margin-top: 14px;
+  border-top: 1px solid var(--gridline);
+  padding-top: 12px;
+}
+.why-change summary {
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.why-change summary::-webkit-details-marker { display: none; }
+.why-change summary::before {
+  content: "\25B8";
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--text-muted);
+  transition: transform 0.15s;
+}
+.why-change[open] summary::before { transform: rotate(90deg); }
+.card.explainer .why-change p {
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
 
 /* Lucky number hero */
 .card.lucky {

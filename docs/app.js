@@ -8,6 +8,12 @@ async function loadJSON(path) {
   }
 }
 
+function hitMeterHTML(n) {
+  let pips = "";
+  for (let i = 0; i < 5; i++) pips += `<span class="pip ${i < n ? "on" : ""}"></span>`;
+  return `<div class="hit-meter"><span class="pips">${pips}</span><span class="hit-frac">${n}/5</span></div>`;
+}
+
 function ballHTML(n, hit, grand) {
   const cls = ["ball"];
   if (grand) cls.push("grand");
@@ -154,7 +160,7 @@ function renderKpis(lang, audit) {
   `).join("");
 
   const verdictKey = { chance: "verdict_chance", above: "verdict_above", below: "verdict_below" }[audit.verdict_key];
-  document.getElementById("verdict").textContent = verdictKey ? t(lang, verdictKey, { z: audit.z_score }) : "";
+  document.getElementById("verdict").innerHTML = verdictKey ? t(lang, verdictKey, { z: audit.z_score }) : "";
 }
 
 function renderChart(lang, audit) {
@@ -227,7 +233,7 @@ function renderHistory(lang, audit) {
     const predHtml = hasPrediction
       ? d.predicted.map((x) => `<span class="n ${drawnSet.has(x) ? "hit" : ""}">${x}</span>`).join("")
       : `<span class="empty-state">&mdash;</span>`;
-    const hits = hasPrediction ? `${d.model_hits}/5` : "&mdash;";
+    const hits = hasPrediction ? hitMeterHTML(d.model_hits) : "&mdash;";
     const grandBadge = d.grand_hit
       ? `<span class="grand-badge hit">${t(lang, "grand_hit")}</span>`
       : `<span class="grand-badge miss">&mdash;</span>`;

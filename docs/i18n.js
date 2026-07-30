@@ -22,6 +22,15 @@ const TRANSLATIONS = {
     explainer_p2: `Daily Grand is a fair, independent draw, so no model can
         find a real edge &mdash; the scorecard below proves it honestly. Consider
         this a fun extra, not a strategy.`,
+    why_change_q: "Why do the predictions barely change?",
+    why_change_a: `The models are trained to make their <strong>error</strong> as small as
+        possible against real draws &mdash; and because a fair lottery has no pattern
+        to learn, the safest low-error guess is simply the <em>average draw</em>.
+        Across the 1,000+ draws on record the five numbers average out to roughly
+        <strong>8, 17, 25, 33 and 42</strong>, with <strong>4</strong> the most common
+        Grand Number. So the pick keeps landing near those values and only nudges a
+        little as recent draws shift the averages. Predictions that barely move
+        aren't a bug &mdash; they're the honest result of there being nothing to predict.`,
     pairs_hint: "Number pairs that have landed together in the same draw most often.",
     legend_model_hits: "Model hits",
     legend_random_baseline: "Random baseline",
@@ -56,9 +65,9 @@ const TRANSLATIONS = {
     kpi_chance: "chance: {v}",
     kpi_empty: "Not enough history to audit yet.",
 
-    verdict_chance: "Indistinguishable from random - no statistical edge (|z| < 2), as expected for a fair lottery.",
-    verdict_above: "Above chance at z={z}, but with small samples this happens by luck ~2.5% of the time and will regress toward 0.51.",
-    verdict_below: "Below chance at z={z} - also just luck; underperformance is as common as overperformance for random picks.",
+    verdict_chance: "<strong>z = {z}</strong> &mdash; in plain terms, the AI is scoring right in line with random guessing. Picture this number as a needle: <strong>0 is pure luck</strong>, and it would have to reach <strong>2</strong> to signal any real skill. At {z} it's nowhere close &mdash; exactly what you'd expect from a fair lottery.",
+    verdict_above: "<strong>z = {z}</strong> &mdash; the AI scored a little above random over this stretch, but with so few draws that's just a lucky run (it happens roughly 1 time in 40) and will drift back toward pure chance.",
+    verdict_below: "<strong>z = {z}</strong> &mdash; the AI scored a little below random over this stretch. That's also just luck &mdash; for random picks an unlucky run is exactly as likely as a lucky one.",
 
     chart_empty: "No draws to chart yet.",
     chart_tooltip: "Model: {hits}/5 &middot; Random avg: {baseline}/5",
@@ -91,6 +100,16 @@ const TRANSLATIONS = {
         modèle ne peut trouver un réel avantage &mdash; le bilan ci-dessous le
         prouve honnêtement. Considérez ceci comme un supplément amusant, pas
         une stratégie.`,
+    why_change_q: "Pourquoi les prédictions changent-elles à peine ?",
+    why_change_a: `Les modèles sont entraînés à rendre leur <strong>erreur</strong> la plus
+        petite possible face aux vrais tirages &mdash; et comme une loterie équitable
+        n'a aucun schéma à apprendre, la supposition la plus sûre est simplement le
+        <em>tirage moyen</em>. Sur les 1 000+ tirages enregistrés, les cinq numéros
+        se situent en moyenne autour de <strong>8, 17, 25, 33 et 42</strong>, avec
+        <strong>4</strong> comme numéro Grand le plus fréquent. Le choix reste donc
+        proche de ces valeurs et ne bouge qu'un peu quand les tirages récents
+        déplacent les moyennes. Des prédictions quasi immobiles ne sont pas un bug
+        &mdash; c'est le résultat honnête du fait qu'il n'y a rien à prédire.`,
     pairs_hint: "Paires de numéros sorties ensemble le plus souvent dans le même tirage.",
     legend_model_hits: "Coups du modèle",
     legend_random_baseline: "Base aléatoire",
@@ -125,9 +144,9 @@ const TRANSLATIONS = {
     kpi_chance: "hasard : {v}",
     kpi_empty: "Pas encore assez d'historique pour analyser.",
 
-    verdict_chance: "Indiscernable du hasard - aucun avantage statistique (|z| < 2), comme attendu pour une loterie équitable.",
-    verdict_above: "Au-dessus du hasard à z={z}, mais avec un petit échantillon cela arrive par chance ~2,5% du temps et reviendra vers 0,51.",
-    verdict_below: "En dessous du hasard à z={z} - aussi juste de la chance ; la sous-performance est aussi fréquente que la sur-performance pour des choix aléatoires.",
+    verdict_chance: "<strong>z = {z}</strong> &mdash; en clair, l'IA obtient exactement le même résultat qu'un choix au hasard. Voyez ce chiffre comme une aiguille : <strong>0 = pur hasard</strong>, et il faudrait atteindre <strong>2</strong> pour indiquer une réelle compétence. À {z}, on en est loin &mdash; précisément ce qu'on attend d'une loterie équitable.",
+    verdict_above: "<strong>z = {z}</strong> &mdash; l'IA a fait un peu mieux que le hasard sur cette période, mais avec aussi peu de tirages ce n'est qu'un coup de chance (environ 1 fois sur 40) qui reviendra vers le pur hasard.",
+    verdict_below: "<strong>z = {z}</strong> &mdash; l'IA a fait un peu moins bien que le hasard sur cette période. C'est aussi juste de la chance &mdash; pour des choix aléatoires, une mauvaise passe est aussi probable qu'une bonne.",
 
     chart_empty: "Aucun tirage à afficher pour le moment.",
     chart_tooltip: "Modèle : {hits}/5 &middot; Moyenne aléatoire : {baseline}/5",
