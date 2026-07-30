@@ -322,7 +322,7 @@ h2.section {
 .history-scroll {
   max-height: 440px;
   overflow: auto;
-  padding-top: 0;
+  padding: 0;
 }
 
 table.history {
@@ -338,13 +338,27 @@ table.history th {
   letter-spacing: 0.02em;
   color: var(--text-muted);
   font-weight: 500;
-  padding: 8px 6px;
+  padding: 12px 6px;
   border-bottom: 1px solid var(--gridline);
   position: sticky;
   top: 0;
-  background: var(--surface-1);
   z-index: 1;
+  background: rgba(252, 252, 251, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
+
+@media (prefers-color-scheme: dark) {
+  table.history th { background: rgba(26, 26, 25, 0.82); }
+}
+
+table.history th:first-child,
+table.history td:first-child { padding-left: 20px; }
+table.history th:last-child,
+table.history td:last-child { padding-right: 20px; }
+
+table.history tr:first-child td { padding-top: 14px; }
+table.history tr:last-child td { padding-bottom: 18px; }
 
 table.history td {
   padding: 8px 6px;
