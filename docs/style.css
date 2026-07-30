@@ -387,12 +387,45 @@ table.history .hit-count {
   background: var(--accent);
   box-shadow: 0 0 0 2px var(--accent-soft);
 }
-.hit-meter .hit-frac {
-  font-size: 12px;
+
+.grand-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.grand-cell .gball,
+.gball.solo {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12.5px;
   font-weight: 600;
-  color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
 }
+.grand-cell .gball.pred {
+  background: transparent;
+  border: 1.5px dashed var(--baseline);
+  color: var(--text-muted);
+}
+.grand-cell .gball.act,
+.gball.solo {
+  background: var(--gray-context);
+  color: var(--text-primary);
+}
+.grand-cell .gsep {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.grand-cell.matched .gball {
+  background: rgba(12, 163, 12, 0.14);
+  border: 1.5px solid #0ca30c;
+  color: #0ca30c;
+}
+.grand-cell.matched .gsep { color: #0ca30c; }
+.grand-cell .grand-target { font-size: 13px; line-height: 1; }
 
 .grand-badge {
   display: inline-flex;

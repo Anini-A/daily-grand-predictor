@@ -73,6 +73,7 @@ const TRANSLATIONS = {
     chart_tooltip: "Model: {hits}/5 &middot; Random avg: {baseline}/5",
     history_empty: "No draws to show yet.",
     grand_hit: "🎯 Hit",
+    grand_tip: "Predicted {pred}, drawn {act}",
     loading: "Loading&hellip;",
   },
   fr: {
@@ -152,6 +153,7 @@ const TRANSLATIONS = {
     chart_tooltip: "Modèle : {hits}/5 &middot; Moyenne aléatoire : {baseline}/5",
     history_empty: "Aucun tirage à afficher pour le moment.",
     grand_hit: "🎯 Réussi",
+    grand_tip: "Prédit {pred}, tiré {act}",
     loading: "Chargement&hellip;",
   },
 };

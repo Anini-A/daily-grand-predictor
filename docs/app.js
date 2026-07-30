@@ -11,7 +11,7 @@ async function loadJSON(path) {
 function hitMeterHTML(n) {
   let pips = "";
   for (let i = 0; i < 5; i++) pips += `<span class="pip ${i < n ? "on" : ""}"></span>`;
-  return `<div class="hit-meter"><span class="pips">${pips}</span><span class="hit-frac">${n}/5</span></div>`;
+  return `<div class="hit-meter" title="${n}/5">${pips}</div>`;
 }
 
 function ballHTML(n, hit, grand) {
@@ -234,12 +234,14 @@ function renderHistory(lang, audit) {
       ? d.predicted.map((x) => `<span class="n ${drawnSet.has(x) ? "hit" : ""}">${x}</span>`).join("")
       : `<span class="empty-state">&mdash;</span>`;
     const hits = hasPrediction ? hitMeterHTML(d.model_hits) : "&mdash;";
-    const grandBadge = d.grand_hit
-      ? `<span class="grand-badge hit">${t(lang, "grand_hit")}</span>`
-      : `<span class="grand-badge miss">&mdash;</span>`;
     const grand = hasPrediction
-      ? `${grandBadge}<span class="grand-compare">(${d.grand_predicted} vs ${d.grand_actual})</span>`
-      : `${d.grand_actual}`;
+      ? `<span class="grand-cell ${d.grand_hit ? "matched" : ""}" title="${t(lang, "grand_tip", { pred: d.grand_predicted, act: d.grand_actual })}">
+           ${d.grand_hit ? '<span class="grand-target">🎯</span>' : ""}
+           <span class="gball pred">${d.grand_predicted}</span>
+           <span class="gsep">&rarr;</span>
+           <span class="gball act">${d.grand_actual}</span>
+         </span>`
+      : `<span class="gball act solo">${d.grand_actual}</span>`;
     return `
       <tr>
         <td>${d.date}</td>
