@@ -345,16 +345,17 @@ table.history td {
 table.history .nums {
   display: flex;
   gap: 4px;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 table.history .n {
-  display: inline-block;
-  min-width: 20px;
+  flex: none;
+  width: 30px;
   text-align: center;
-  padding: 1px 4px;
+  padding: 2px 0;
   border-radius: 4px;
   color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
 }
 
 table.history .n.hit {
