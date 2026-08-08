@@ -1,5 +1,5 @@
 {
-  "draws_analyzed": 1021,
+  "draws_analyzed": 1022,
   "lucky_number": 14,
   "lucky_number_count": 122,
   "lucky_number_pct": 11.9,
@@ -13,7 +13,7 @@
     },
     {
       "number": 37,
-      "count": 120
+      "count": 121
     },
     {
       "number": 7,
@@ -21,7 +21,7 @@
     },
     {
       "number": 42,
-      "count": 117
+      "count": 118
     },
     {
       "number": 43,
@@ -122,9 +122,9 @@
     "grand_number": 2,
     "counts": [
       122,
+      121,
       120,
-      120,
-      117,
+      118,
       117
     ],
     "grand_count": 180
