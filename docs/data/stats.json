@@ -1,11 +1,11 @@
 {
-  "draws_analyzed": 1025,
+  "draws_analyzed": 1026,
   "lucky_number": 14,
   "lucky_number_count": 122,
   "lucky_number_pct": 11.9,
   "lucky_grand": 2,
   "lucky_grand_count": 180,
-  "lucky_grand_pct": 17.6,
+  "lucky_grand_pct": 17.5,
   "hot_numbers": [
     {
       "number": 14,
@@ -62,11 +62,11 @@
       "count": 91
     },
     {
-      "number": 10,
-      "count": 93
+      "number": 22,
+      "count": 94
     },
     {
-      "number": 22,
+      "number": 10,
       "count": 94
     },
     {

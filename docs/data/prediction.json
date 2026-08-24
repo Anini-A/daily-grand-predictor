@@ -2,12 +2,12 @@
   "target_date": "2026-08-20",
   "numbers": [
     8,
-    16,
+    18,
     25,
     34,
-    41
+    42
   ],
   "grand_number": 4,
-  "generated_at": "2026-08-18T11:53:03.533060Z",
-  "newly_saved": true
+  "generated_at": "2026-08-24T11:56:30.410512Z",
+  "newly_saved": false
 }
