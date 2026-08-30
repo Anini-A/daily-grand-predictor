@@ -1,5 +1,5 @@
-const CACHE = "dg-predictor-v2";
-const CORE_ASSETS = ["./", "./index.html", "./style.css", "./app.js", "./manifest.json"];
+const CACHE = "dg-predictor-v3";
+const CORE_ASSETS = ["./", "./index.html", "./style.css", "./app.js", "./i18n.js", "./manifest.json"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE_ASSETS)));
@@ -20,8 +20,13 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request)
       .then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE).then((c) => c.put(event.request, copy));
+        // Only ever store a good GET response. Caching a 404 or a 5xx -- which
+        // can happen for a moment while a new deploy swaps in -- would poison
+        // the cache and keep serving that error page as the offline fallback.
+        if (event.request.method === "GET" && res.ok && res.type !== "opaque") {
+          const copy = res.clone();
+          caches.open(CACHE).then((c) => c.put(event.request, copy)).catch(() => {});
+        }
         return res;
       })
       .catch(() => caches.match(event.request))

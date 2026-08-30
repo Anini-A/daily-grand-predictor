@@ -1,8 +1,8 @@
-"""Email the latest prediction. Reads docs/data/prediction.json + audit.json
-(written by predict.py) and sends via Gmail SMTP using an App Password.
+"""Email the latest prediction. Reads docs/data/prediction.json (written by
+predict.py) and sends via Gmail SMTP using an App Password.
 
 Required environment variables: GMAIL_ADDRESS, GMAIL_APP_PASSWORD, NOTIFY_EMAIL.
-Optional: DASHBOARD_URL (linked in the email body).
+Optional: DASHBOARD_URL (linked in the email body; defaults to the live site).
 """
 import json
 import os
@@ -14,33 +14,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DOCS_DATA = ROOT / "docs" / "data"
 
-VERDICT_TEXT = {
-    "chance": "Indistinguishable from random - no statistical edge (|z| < 2), as expected for a fair lottery.",
-    "above": "Above chance at z={z}, but with small samples this happens by luck ~2.5% of the time and will regress toward 0.51.",
-    "below": "Below chance at z={z} - also just luck; underperformance is as common as overperformance for random picks.",
-}
+DEFAULT_DASHBOARD_URL = "https://daily-grand-predictor.vercel.app"
 
 
-def build_body(prediction: dict, audit: dict | None, dashboard_url: str) -> str:
+def build_body(prediction: dict, dashboard_url: str) -> str:
     numbers = " - ".join(str(n) for n in prediction["numbers"])
     lines = [
         f"Next Daily Grand draw: {prediction['target_date']}",
         f"Predicted numbers: {numbers}",
         f"Predicted Grand Number: {prediction['grand_number']}",
         "",
+        "This is a fair, independent lottery draw - treat this as a fun pick, not a real edge.",
+        "",
+        f"Dashboard: {dashboard_url}",
     ]
-    if audit:
-        lines.append(
-            f"Honest track record: {audit['model_avg_match']}/5 avg match over "
-            f"{audit['draws_audited']} draws (z={audit['z_score']})."
-        )
-        verdict_text = VERDICT_TEXT.get(audit.get("verdict_key"))
-        if verdict_text:
-            lines.append(verdict_text.format(z=audit["z_score"]))
-        lines.append("")
-    lines.append("This is a fair, independent lottery draw - treat this as a fun pick, not a real edge.")
-    if dashboard_url:
-        lines.append(f"\nDashboard: {dashboard_url}")
     return "\n".join(lines)
 
 
@@ -51,15 +38,14 @@ def main() -> None:
         sys.exit(1)
 
     prediction = json.loads(pred_path.read_text())
-    audit_path = DOCS_DATA / "audit.json"
-    audit = json.loads(audit_path.read_text()) if audit_path.exists() else None
 
     sender = os.environ["GMAIL_ADDRESS"]
     app_password = os.environ["GMAIL_APP_PASSWORD"]
     recipient = os.environ["NOTIFY_EMAIL"]
-    dashboard_url = os.environ.get("DASHBOARD_URL", "")
+    dashboard_url = os.environ.get("DASHBOARD_URL") or DEFAULT_DASHBOARD_URL
+    dashboard_url = dashboard_url.rstrip("/")
 
-    msg = MIMEText(build_body(prediction, audit, dashboard_url))
+    msg = MIMEText(build_body(prediction, dashboard_url))
     msg["Subject"] = f"Daily Grand pick for {prediction['target_date']}: {' '.join(map(str, prediction['numbers']))} + {prediction['grand_number']}"
     msg["From"] = sender
     msg["To"] = recipient

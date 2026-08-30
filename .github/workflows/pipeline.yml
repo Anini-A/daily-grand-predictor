@@ -38,6 +38,29 @@ jobs:
         if: steps.scrape.outputs.new_draws == 'true'
         run: python scripts/predict.py
 
+      - name: Commit updated data + dashboard
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update draws, prediction, and dashboard data"
+          file_pattern: "daily_grand_results.csv future_draws.csv docs/data/*.json"
+
+      # The email links straight to the dashboard, so it must not go out until
+      # Vercel has actually published the new data. Wait for the deploy that
+      # the commit above triggered before notifying.
+      - name: Wait for Vercel deploy
+        if: steps.scrape.outputs.new_draws == 'true'
+        run: |
+          url="${{ vars.DASHBOARD_URL }}"
+          target=$(python -c "import json;print(json.load(open('docs/data/prediction.json'))['target_date'])")
+          for i in $(seq 1 30); do
+            sleep 10
+            if curl -fsS "${url%/}/data/prediction.json" | grep -q "$target"; then
+              echo "Dashboard is serving $target after $((i*10))s."
+              exit 0
+            fi
+          done
+          echo "::warning::Dashboard still not serving $target after 5 minutes; sending email anyway."
+
       - name: Send email notification
         if: steps.scrape.outputs.new_draws == 'true'
         env:
@@ -46,9 +69,3 @@ jobs:
           NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
           DASHBOARD_URL: ${{ vars.DASHBOARD_URL }}
         run: python scripts/notify.py
-
-      - name: Commit updated data + dashboard
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Update draws, prediction, and dashboard data"
-          file_pattern: "daily_grand_results.csv future_draws.csv docs/data/*.json"
