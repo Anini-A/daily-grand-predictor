@@ -5,7 +5,12 @@ on:
     # Runs daily; scrape.py is idempotent (dedupes), so this is safe even on
     # days with no new draw and immune to holiday-shifted draw dates.
     - cron: "30 11 * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-run predict/backfill even when no new draw was scraped (use after a data fix)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -35,7 +40,19 @@ jobs:
         run: python scripts/stats.py
 
       - name: Retrain and predict
-        if: steps.scrape.outputs.new_draws == 'true'
+        if: steps.scrape.outputs.new_draws == 'true' || inputs.force
+        run: python scripts/predict.py
+
+      # If the scraper ever stalls and then catches up on several draws at
+      # once, those draws land with no prediction against them and can never
+      # be scored. backfill.py walk-forward fills any such gap (and is a no-op
+      # on a normal day, when every recent draw already has a prediction).
+      - name: Backfill predictions for any missed draws
+        if: steps.scrape.outputs.new_draws == 'true' || inputs.force
+        run: python scripts/backfill.py
+
+      - name: Rebuild audit and dashboard JSON
+        if: steps.scrape.outputs.new_draws == 'true' || inputs.force
         run: python scripts/predict.py
 
       - name: Commit updated data + dashboard
