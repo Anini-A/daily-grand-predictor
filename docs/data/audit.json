@@ -1,13 +1,59 @@
 {
-  "draws_audited": 60,
+  "draws_audited": 62,
   "model_avg_match": 0.5,
   "theoretical_chance": 0.51,
   "edge_over_chance": -0.01,
   "z_score": -0.12,
-  "grand_hits": 7,
-  "grand_hits_chance": 8.6,
+  "grand_hits": 8,
+  "grand_hits_chance": 8.9,
   "verdict_key": "chance",
   "history": [
+    {
+      "date": "2026-09-03",
+      "drawn": [
+        13,
+        17,
+        18,
+        36,
+        46
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "random_baseline": 0.494,
+      "beats_pct_random": 58.5,
+      "grand_predicted": 4,
+      "grand_actual": 6,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-08-31",
+      "drawn": [
+        6,
+        23,
+        28,
+        34,
+        37
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.525,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 4,
+      "grand_hit": true
+    },
     {
       "date": "2026-08-27",
       "drawn": [
@@ -1391,6 +1437,48 @@
   ],
   "recent_draws": [
     {
+      "date": "2026-09-03",
+      "drawn": [
+        13,
+        17,
+        18,
+        36,
+        46
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 1,
+      "grand_predicted": 4,
+      "grand_actual": 6,
+      "grand_hit": false
+    },
+    {
+      "date": "2026-08-31",
+      "drawn": [
+        6,
+        23,
+        28,
+        34,
+        37
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        33,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
+      "grand_actual": 4,
+      "grand_hit": true
+    },
+    {
       "date": "2026-08-27",
       "drawn": [
         5,
@@ -1871,48 +1959,6 @@
       "model_hits": 0,
       "grand_predicted": 3,
       "grand_actual": 2,
-      "grand_hit": false
-    },
-    {
-      "date": "2026-06-08",
-      "drawn": [
-        3,
-        11,
-        19,
-        36,
-        37
-      ],
-      "predicted": [
-        8,
-        16,
-        26,
-        34,
-        42
-      ],
-      "model_hits": 0,
-      "grand_predicted": 4,
-      "grand_actual": 5,
-      "grand_hit": false
-    },
-    {
-      "date": "2026-06-04",
-      "drawn": [
-        5,
-        25,
-        29,
-        30,
-        45
-      ],
-      "predicted": [
-        8,
-        17,
-        25,
-        34,
-        42
-      ],
-      "model_hits": 1,
-      "grand_predicted": 4,
-      "grand_actual": 3,
       "grand_hit": false
     }
   ]

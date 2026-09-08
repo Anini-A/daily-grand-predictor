@@ -1,7 +1,7 @@
 {
-  "draws_analyzed": 1028,
+  "draws_analyzed": 1030,
   "lucky_number": 37,
-  "lucky_number_count": 122,
+  "lucky_number_count": 123,
   "lucky_number_pct": 11.9,
   "lucky_grand": 2,
   "lucky_grand_count": 180,
@@ -9,7 +9,7 @@
   "hot_numbers": [
     {
       "number": 37,
-      "count": 122
+      "count": 123
     },
     {
       "number": 14,
@@ -24,16 +24,16 @@
       "count": 119
     },
     {
+      "number": 17,
+      "count": 117
+    },
+    {
       "number": 2,
       "count": 117
     },
     {
       "number": 43,
       "count": 117
-    },
-    {
-      "number": 17,
-      "count": 116
     },
     {
       "number": 47,
@@ -71,7 +71,7 @@
     },
     {
       "number": 36,
-      "count": 95
+      "count": 96
     }
   ],
   "hot_pairs": [
@@ -81,6 +81,13 @@
         45
       ],
       "count": 19
+    },
+    {
+      "numbers": [
+        28,
+        37
+      ],
+      "count": 18
     },
     {
       "numbers": [
@@ -102,13 +109,6 @@
         46
       ],
       "count": 18
-    },
-    {
-      "numbers": [
-        14,
-        37
-      ],
-      "count": 18
     }
   ],
   "forever_pick": {
@@ -117,11 +117,11 @@
       14,
       7,
       42,
-      2
+      17
     ],
     "grand_number": 2,
     "counts": [
-      122,
+      123,
       122,
       120,
       119,
