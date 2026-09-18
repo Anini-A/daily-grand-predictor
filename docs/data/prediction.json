@@ -1,13 +1,13 @@
 {
-  "target_date": "2026-09-17",
+  "target_date": "2026-09-21",
   "numbers": [
     8,
-    16,
+    17,
     25,
-    33,
+    34,
     42
   ],
   "grand_number": 4,
-  "generated_at": "2026-09-17T15:38:03.946544Z",
+  "generated_at": "2026-09-18T15:06:34.466659Z",
   "newly_saved": false
 }
