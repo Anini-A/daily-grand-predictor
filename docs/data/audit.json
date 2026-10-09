@@ -1,13 +1,36 @@
 {
-  "draws_audited": 71,
-  "model_avg_match": 0.521,
+  "draws_audited": 72,
+  "model_avg_match": 0.514,
   "theoretical_chance": 0.51,
-  "edge_over_chance": 0.011,
-  "z_score": 0.14,
+  "edge_over_chance": 0.004,
+  "z_score": 0.05,
   "grand_hits": 9,
-  "grand_hits_chance": 10.1,
+  "grand_hits_chance": 10.3,
   "verdict_key": "chance",
   "history": [
+    {
+      "date": "2026-10-08",
+      "drawn": [
+        1,
+        2,
+        13,
+        30,
+        43
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "random_baseline": 0.513,
+      "beats_pct_random": 0.0,
+      "grand_predicted": 4,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
     {
       "date": "2026-10-05",
       "drawn": [
@@ -1644,6 +1667,27 @@
   ],
   "recent_draws": [
     {
+      "date": "2026-10-08",
+      "drawn": [
+        1,
+        2,
+        13,
+        30,
+        43
+      ],
+      "predicted": [
+        8,
+        17,
+        25,
+        34,
+        42
+      ],
+      "model_hits": 0,
+      "grand_predicted": 4,
+      "grand_actual": 3,
+      "grand_hit": false
+    },
+    {
       "date": "2026-10-05",
       "drawn": [
         14,
@@ -2145,27 +2189,6 @@
       "model_hits": 1,
       "grand_predicted": 4,
       "grand_actual": 7,
-      "grand_hit": false
-    },
-    {
-      "date": "2026-07-13",
-      "drawn": [
-        5,
-        24,
-        32,
-        37,
-        46
-      ],
-      "predicted": [
-        8,
-        17,
-        25,
-        34,
-        42
-      ],
-      "model_hits": 0,
-      "grand_predicted": 4,
-      "grand_actual": 5,
       "grand_hit": false
     }
   ]
