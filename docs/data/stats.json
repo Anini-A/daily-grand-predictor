@@ -1,8 +1,8 @@
 {
-  "draws_analyzed": 1046,
+  "draws_analyzed": 1047,
   "lucky_number": 37,
   "lucky_number_count": 124,
-  "lucky_number_pct": 11.9,
+  "lucky_number_pct": 11.8,
   "lucky_grand": 2,
   "lucky_grand_count": 182,
   "lucky_grand_pct": 17.4,
@@ -54,16 +54,16 @@
       "count": 91
     },
     {
-      "number": 20,
-      "count": 92
-    },
-    {
       "number": 26,
       "count": 93
     },
     {
+      "number": 20,
+      "count": 93
+    },
+    {
       "number": 22,
-      "count": 94
+      "count": 95
     },
     {
       "number": 10,
