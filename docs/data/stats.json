@@ -1,15 +1,15 @@
 {
-  "draws_analyzed": 1050,
+  "draws_analyzed": 1051,
   "lucky_number": 37,
-  "lucky_number_count": 125,
-  "lucky_number_pct": 11.9,
+  "lucky_number_count": 126,
+  "lucky_number_pct": 12.0,
   "lucky_grand": 2,
   "lucky_grand_count": 182,
   "lucky_grand_pct": 17.3,
   "hot_numbers": [
     {
       "number": 37,
-      "count": 125
+      "count": 126
     },
     {
       "number": 7,
@@ -37,7 +37,7 @@
     },
     {
       "number": 5,
-      "count": 115
+      "count": 116
     }
   ],
   "cold_numbers": [
@@ -121,7 +121,7 @@
     ],
     "grand_number": 2,
     "counts": [
-      125,
+      126,
       124,
       123,
       120,
